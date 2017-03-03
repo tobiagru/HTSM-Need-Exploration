@@ -1,8 +1,7 @@
 #import core
 
-#import public 
+#import public
 from flask import render_template, request
-from ..models import EditableHTML
 
 #import privat
 from . import main
