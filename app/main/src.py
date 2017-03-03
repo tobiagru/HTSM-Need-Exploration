@@ -11,35 +11,37 @@ from .. import db
 # questions has questionsID, option1 and option2
 def build_questions(language="EN", owner=None):
 
-	#query 20 random questions
-	questionList = db.Question.query\
-						.join(db.QuestionText)\
-						.filter(QuestionText.language == language)\
-						.order_by(rand())\
-						.limit(10)\
-						.all()
+	try:
+		#query 20 random questions
+		questionList = db.Question.query\
+							.join(db.QuestionText)\
+							.filter(QuestionText.language == language)\
+							.order_by(rand())\
+							.limit(10)\
+							.all()
 
-	questionList2 = db.Question.query\
-						.join(db.QuestionText)\
-						.filter(QuestionText.language == language)\
-						.order_by(rand())\
-						.limit(10)\
-						.all()
+		questionList2 = db.Question.query\
+							.join(db.QuestionText)\
+							.filter(QuestionText.language == language)\
+							.order_by(rand())\
+							.limit(10)\
+							.all()
+	except:
+		print("Failed to load 20 questions from the database in src build_questions")
 	
 	questions = {}
 
-	questions[questions] = [ 
-			[ 
-				{"questionId":question.questionId,
-					 "questionText":question.questionText},
-				{"questionId":question2.questionId,
-					 "questionText":question2.questionText}
-			] for question, question2 in zip(questionList, questionList2)
-		]
-
-	for question in questions:
-		questions['questions']['questionId'] = question.questionsID
-		questions['questions']['questionText'] = question.QuestionText.text
+	try:
+		questions[questions] = [ 
+				[ 
+					{"questionId":question.questionId,
+						 "questionText":question.questionText},
+					{"questionId":question2.questionId,
+						 "questionText":question2.questionText}
+				] for question, question2 in zip(questionList, questionList2)
+			]
+	except:
+		print("Failed to turn list of 20 questions into 10 tuples of 2 questions")
 
 	# Session.query.offset(
     #    	func.floor(
@@ -66,16 +68,19 @@ def save_answers(answers, owner=None):
 
 	for answer in parsed_answer[answers]:
 		#save answer
-		answer_tmp = Answer.insert().values(
-			questionId = parsed_answer[answer][questionId],
-			altQuestionId = parsed_answer[answer][altQuestionId],
-			answerValue = parsed_answer[answer][answerValue],
-			source = owner
-		)
-		#save metadata
-		for metaKey in parsed_answer[metadata]:
-			AnswerMeta.insert().values(
-				answerId = answer_tmp.id,
-				key = metaKey,
-				value = parsed_answer[metadata][metaKey]
-				)
+		try:
+			answer_tmp = Answer.insert().values(
+				questionId = parsed_answer[answer][questionId],
+				altQuestionId = parsed_answer[answer][altQuestionId],
+				answerValue = parsed_answer[answer][answerValue],
+				source = owner
+			)
+			#save metadata
+			for metaKey in parsed_answer[metadata]:
+				AnswerMeta.insert().values(
+					answerId = answer_tmp.id,
+					key = metaKey,
+					value = parsed_answer[metadata][metaKey]
+					)
+		except:
+			print("Failed to save answer in db")
