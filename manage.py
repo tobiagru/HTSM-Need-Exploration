@@ -9,7 +9,9 @@ from redis import Redis
 from rq import Connection, Queue, Worker
 
 from app import create_app, db
-from app.models import Role, User
+from app.models import Role, User, fill_the_db
+
+
 
 if os.path.exists('config.env'):
     print('Importing environment from .env file')
@@ -50,6 +52,9 @@ def recreate_db():
     db.create_all()
     db.session.commit()
 
+@manager.command
+def fill_db()
+    fill_the_db()
 
 @manager.option(
     '-n',

@@ -1,4 +1,4 @@
-from .. import db
+from .. import db 
 
 adjectives = [
 				"fast",
@@ -38,12 +38,13 @@ nouns = [
 			"mobility"
 		]
 
-for adjective in adjectives:
-	for noun in nouns:
-		try:
-			question_tmp = Questions.insert().values(owner = "FB")
-			Questions.insert().values(questionId = questions_tmp.id,
-									language = "EN",
-									text = adjective + " " +noun)
-		except:
-			print("failed to save questions to Question DB")
+def fill_the_db():
+	for adjective in adjectives:
+		for noun in nouns:
+			try:
+				question_tmp = Questions.insert().values(owner = "FB")
+				Questions.insert().values(questionId = questions_tmp.id,
+										language = "EN",
+										text = adjective + " " +noun)
+			except:
+				print("failed to save questions to Question DB")
