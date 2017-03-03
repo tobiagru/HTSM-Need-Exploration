@@ -11,6 +11,6 @@ class Question(db.Model):
 class QuestionText(db.Model):
     __tablename__ = 'question_text'
     id = db.Column(db.Integer, primary_key=True)
-    question_id = db.Column(db.Integer, db.ForeignKey(Question.id))
+    questionId = db.Column(db.Integer, db.ForeignKey(Question.id))
     language = db.Column(db.String(8),default='EN')
     text = db.Column(db.UnicodeText)
