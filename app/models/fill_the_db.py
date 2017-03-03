@@ -40,7 +40,10 @@ nouns = [
 
 for adjective in adjectives:
 	for noun in nouns:
-		question_tmp = Questions.insert().values(owner = "FB")
-		Questions.insert().values(questionId = questions_tmp.id,
+		try:
+			question_tmp = Questions.insert().values(owner = "FB")
+			Questions.insert().values(questionId = questions_tmp.id,
 									language = "EN",
 									text = adjective + " " +noun)
+		except:
+			print("failed to save questions to Question DB")
