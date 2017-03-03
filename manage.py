@@ -11,7 +11,6 @@ from rq import Connection, Queue, Worker
 from app import create_app, db
 from app.models import Role, User
 
-print("Manage.py loaded")
 if os.path.exists('config.env'):
     print('Importing environment from .env file')
     for line in open('config.env'):
