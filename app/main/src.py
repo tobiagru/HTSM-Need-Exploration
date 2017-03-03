@@ -22,13 +22,20 @@ def build_questions(language="EN", owner=None):
 def getusertype():
 	random.randint(1,20)
 
-def save_answers(answers, owner):
+def save_answers(answers, owner=None):
 	parsed_answer = json.loads(answer)
-
-	#save answer option1
-		#parsed_answer[option1]
-
-		#
-	#save answer option2
+	for answer in parsed_answer[answers]:
+		#save answer
+		answer_tmp = answers.insert().values(
+			questionId = parsed_answer[answer][questionId],
+			answer = parsed_answer[answers][answer],
+			altQuestionId = parsed_answer[answers][altAnswerId],
+			source = owner
+		)
+		#save metadata
+		answer_meta.insert().values(
+			answerId = answer_tmp.
+			parsed_answer[metadata][language]
+			#parsed_answer[metadata][country]
 
 
