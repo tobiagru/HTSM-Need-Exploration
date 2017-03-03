@@ -29,6 +29,7 @@ def getquestion():
 	if request.method == 'GET':
 		return build_questions()
 
+'''
 #returns: questions
 @main.route('/getquestion/<owner>', methods=['GET', 'POST'])
 def getquestion():
@@ -41,6 +42,7 @@ def getquestion():
 		return build_questions(
 			language = "EN",
 			owner = owner)
+'''
 
 #recieve: answers, asnwer_meta
 #return: usertype
@@ -50,6 +52,7 @@ def postanswer():
 		save_answers(request.form['answers'])
 		return getusertype()
 
+'''
 #recieve: answers, asnwer_meta
 #return: usertype
 @main.route('/postanswer/<owner>', methods=['GET', 'POST'])
@@ -57,6 +60,7 @@ def postanswer():
 	if request.method == 'POST':
 		save_answers(request.form['answers'], owner)
 		return getusertype()
+'''
 
 #return: ...
 @main.route('/analytics')
