@@ -5,7 +5,6 @@ from flask import render_template, request
 
 #import privat
 from . import main
-from . import models
 import src
 
 #Session
