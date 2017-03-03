@@ -17,11 +17,11 @@ def index():
 @main.route('/getquestion', methods=['GET', 'POST'])
 def getquestion():
 	if request.method == 'POST':
-		return build_questions(
+		return src.build_questions(
 			language = request.form['language']
 		)
 	if request.method == 'GET':
-		return build_questions()
+		return src.build_questions()
 
 '''
 #returns: questions
@@ -43,8 +43,8 @@ def getquestion():
 @main.route('/postanswer', methods=['GET', 'POST'])
 def postanswer():
 	if request.method == 'POST':
-		save_answers(request.form['answers'])
-		return getusertype()
+		src.save_answers(request.form['answers'])
+		return src.getusertype()
 
 '''
 #recieve: answers, asnwer_meta
