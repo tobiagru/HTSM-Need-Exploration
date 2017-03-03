@@ -15,8 +15,9 @@ class Config:
     APP_NAME = 'Flask-Base'
     if os.environ.get('SECRET_KEY'):
         SECRET_KEY = os.environ.get('SECRET_KEY')
+        print("Secret Key set")
     else:
-        SECRET_KEY = 'SECRET_KEY_ENV_VAR_NOT_SET'
+        SECRET_KEY = 'o7cLKEWOlSLbDjkSolS8QgzX65xAFq90GJvyAGUs'
         print('SECRET KEY ENV VAR NOT SET! SHOULD NOT SEE IN PRODUCTION')
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
 
