@@ -57,6 +57,9 @@ class Config:
 
 
 class DevelopmentConfig(Config):
+    print "Starten in DEV mode"
+    print os.environ.get('DATABASE_URL')
+    print os.environ.get('FLASK_CONFIG')
     DEBUG = True
     ASSETS_DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
@@ -72,6 +75,7 @@ class TestingConfig(Config):
 
 
 class ProductionConfig(Config):
+    print os.environ.get('DATABASE_URL')
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'data.sqlite')
     SSL_DISABLE = (os.environ.get('SSL_DISABLE') or 'True') == 'True'
