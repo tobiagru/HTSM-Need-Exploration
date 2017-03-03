@@ -15,8 +15,9 @@ class Config:
     APP_NAME = 'Flask-Base'
     if os.environ.get('SECRET_KEY'):
         SECRET_KEY = os.environ.get('SECRET_KEY')
+        print("Secret Key set")
     else:
-        SECRET_KEY = 'SECRET_KEY_ENV_VAR_NOT_SET'
+        SECRET_KEY = 'o7cLKEWOlSLbDjkSolS8QgzX65xAFq90GJvyAGUs'
         print('SECRET KEY ENV VAR NOT SET! SHOULD NOT SEE IN PRODUCTION')
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
 
@@ -56,6 +57,9 @@ class Config:
 
 
 class DevelopmentConfig(Config):
+    print "Starten in DEV mode"
+    print os.environ.get('DATABASE_URL')
+    print os.environ.get('FLASK_CONFIG')
     DEBUG = True
     ASSETS_DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
@@ -71,6 +75,7 @@ class TestingConfig(Config):
 
 
 class ProductionConfig(Config):
+    print os.environ.get('DATABASE_URL')
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'data.sqlite')
     SSL_DISABLE = (os.environ.get('SSL_DISABLE') or 'True') == 'True'
