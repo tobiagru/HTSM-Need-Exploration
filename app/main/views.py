@@ -63,4 +63,3 @@ def postanswer():
 @main.route('/analytics')
 def analytics():
 	pass
->>>>>>> b24bb6a642a19e9bfc889a46212c5569ccfef20f
