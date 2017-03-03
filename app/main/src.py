@@ -52,6 +52,13 @@ def getusertype():
 def save_answers(answers, owner=None):
 	parsed_answer = json.loads(answer)
 
+	#Answer.bulk_insert_mappings(
+	#	[{'questionId' = parsed_answer[answer][questionId],
+	#		'altQuestionId' = parsed_answer[answer][altQuestionId],
+	#		'answerValue' = parsed_answer[answer][answerValue],
+	#		'source' = owner
+	#		} for 
+	#Answer.commit()
 
 	for answer in parsed_answer[answers]:
 		#save answer
