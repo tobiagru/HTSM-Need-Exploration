@@ -10,7 +10,7 @@ class Answer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     questionId = db.Column(db.Integer, db.ForeignKey(Question.id))
     altQuestionId = db.Column(db.Integer, db.ForeignKey(Question.id))
-    answer = db.Column(db.Boolean)
+    answerValue = db.Column(db.Boolean)
     timestamp = db.Column(db.DateTime, server_default=func.now())
     source = db.Column(db.Integer)
 
