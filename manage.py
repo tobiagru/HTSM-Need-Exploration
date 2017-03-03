@@ -53,7 +53,7 @@ def recreate_db():
     db.session.commit()
 
 @manager.command
-def fill_db()
+def fill_db():
     fill_the_db()
 
 @manager.option(
