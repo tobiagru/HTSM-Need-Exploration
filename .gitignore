@@ -3,10 +3,7 @@ webassets-external/
 .DS_Store
 *.pyc
 *.pyo
-env
 venv
-.env
-env*
 dist
 *.egg
 *.egg-info
