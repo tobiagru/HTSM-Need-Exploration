@@ -33,8 +33,8 @@ def build_questions(language="EN", owner=None):
 									{"questionId":question.questionId,
 										 "questionText":question.questionText},
 									{"questionId":question2.questionId,
-										 "questionText":question2.questionText}
-								]for zip(questionList, questionList2)
+										 "questionText":question2.questionText},
+								] for zip(questionList, questionList2)
 							]
 
 	for question in questions:
