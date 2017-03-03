@@ -28,6 +28,7 @@ def build_questions(language="EN", owner=None):
 							.all()
 	except:
 		print("Failed to load 20 questions from the database in src build_questions")
+		return "fail"
 	
 	questions = {}
 
@@ -42,6 +43,7 @@ def build_questions(language="EN", owner=None):
 			]
 	except:
 		print("Failed to turn list of 20 questions into 10 tuples of 2 questions")
+		return "fail"
 
 	# Session.query.offset(
     #    	func.floor(
@@ -84,3 +86,4 @@ def save_answers(answers, owner=None):
 					)
 		except:
 			print("Failed to save answer in db")
+			return "fail"
