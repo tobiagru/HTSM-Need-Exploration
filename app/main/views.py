@@ -13,18 +13,12 @@ import src
 def index():
     return render_template('main/index.html')
 
-@main.route('/about')
-def about():
-    editable_html_obj = EditableHTML.get_editable_html('about')
-    return render_template('main/about.html',
-                           editable_html_obj=editable_html_obj)
-
 #returns: questions
 @main.route('/getquestion', methods=['GET', 'POST'])
 def getquestion():
 	if request.method == 'POST':
 		return src.build_questions(
-			language = request.form['language'],
+			language = request.form['language']
 		)
 	if request.method == 'GET':
 		return src.build_questions()
