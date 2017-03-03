@@ -1,5 +1,5 @@
 from flask import current_app
-from . import Question, Answer
+from . import Question
 from sqlalchemy.sql import func
 
 from .. import db
