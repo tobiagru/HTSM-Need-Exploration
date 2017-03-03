@@ -12,8 +12,30 @@ from .. import db
 def build_questions(language="EN", owner=None):
 
 	#query 20 random questions
-	questions = db.Question.query.join(db.QuestionText).order_by(rand()).limit(20).all()
+	questionList = db.Question.query
+						.join(db.QuestionText)
+						.filter(QuestionText.language == language)
+						.order_by(rand())
+						.limit(10)
+						.all()
+
+	questionList2 = db.Question.query
+						.join(db.QuestionText)
+						.filter(QuestionText.language == language)
+						.order_by(rand())
+						.limit(10)
+						.all()
 	
+	questions = {}
+
+	questions[questions] = [
+		[{"questionId:"question.questionId, "questionText":question.questionText},
+		{"questionId:"question2.questionId, "questionText":question2.questionText}
+		]for zip(questionList, questionList2)]
+
+	for question in questions:
+		questions['questions']['questionId'] = question.questionsID
+		questions['questions']['questionText'] = question.QuestionText.text
 
 	# Session.query.offset(
     #    	func.floor(
@@ -24,22 +46,24 @@ def build_questions(language="EN", owner=None):
 
 
 
-
 def getusertype():
 	random.randint(1,20)
 
 def save_answers(answers, owner=None):
 	parsed_answer = json.loads(answer)
+
+
 	for answer in parsed_answer[answers]:
 		#save answer
-		answer_tmp = answers.insert().values(
+		answer_tmp = Answer.insert().values(
 			questionId = parsed_answer[answer][questionId],
-			answer = parsed_answer[answers][answer],
-			altQuestionId = parsed_answer[answers][altAnswerId],
+			altQuestionId = parsed_answer[answer][altQuestionId],
+			answerValue = parsed_answer[answer][answerValue],
 			source = owner
 		)
 		#save metadata
-		answer_meta.insert().values(
-			answerId = answer_tmp.
-			parsed_answer[metadata][language]
-			#parsed_answer[metadata][country]
+		for metaKey in parsed_answer[metadata]:
+			AnswerMeta.insert().values(
+				answerId = answer_tmp.id,
+				key = metaKey,
+				value = parsed_answer[metadata][metaKey]
