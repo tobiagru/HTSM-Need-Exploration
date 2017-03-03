@@ -28,7 +28,7 @@ def build_questions(language="EN", owner=None):
 	
 	questions = {}
 
-	questions[questions] = [ [ {"questionId":question.questionId, "questionText":question.questionText}, {"questionId":question2.questionId, "questionText":question2.questionText} ] for zip(questionList, questionList2) ]
+	questions[questions] = [ [ {"questionId":question.questionId, "questionText":question.questionText}, {"questionId":question2.questionId, "questionText":question2.questionText} ] for question, question2 in zip(questionList, questionList2) ]
 
 	for question in questions:
 		questions['questions']['questionId'] = question.questionsID
