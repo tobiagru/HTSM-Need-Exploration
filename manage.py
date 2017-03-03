@@ -54,7 +54,7 @@ def recreate_db():
 
 @manager.command
 def fill_db():
-    fill_the_db()
+    fill_the_db.fill_the_db()
 
 @manager.option(
     '-n',
