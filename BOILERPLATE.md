@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # flask-base 
 [![Circle CI](https://circleci.com/gh/hack4impact/flask-base.svg?style=svg)](https://circleci.com/gh/hack4impact/flask-base) [![Stories in Ready](https://badge.waffle.io/hack4impact/flask-base.png?label=ready&title=Ready)](https://waffle.io/hack4impact/flask-base) [![Code Climate](https://codeclimate.com/github/hack4impact/flask-base/badges/gpa.svg)] (https://codeclimate.com/github/hack4impact/flask-base/coverage) [![Issue Count](https://codeclimate.com/github/hack4impact/flask-base/badges/issue_count.svg)](https://codeclimate.com/github/hack4impact/flask-base) ![python3.x](https://img.shields.io/badge/python-3.x-brightgreen.svg)  ![python2.x](https://img.shields.io/badge/python-2.x-yellow.svg)
 <img src="readme_media/logo@2x.png" width="400"/>
@@ -188,3 +189,17 @@ https://medium.freecodecamp.com/how-we-got-a-2-year-old-repo-trending-on-github-
 
 ## License
 [MIT License](LICENSE.md)
+=======
+# HTSM-Need-Exploration
+High Tech Startup Management - Need Exploration
+
+
+# Server Configuration
+
+## Public IP address
+13.84.178.24
+
+## User
+need-exploration
+
+>>>>>>> d8ccc9e9155246016eaf0219ea88098b7d2b7af6
