@@ -25,7 +25,7 @@ fail_questions = json.dumps({"questions":[
 							[{"questionId": "15","questionText":"15"},
 								{"questionId": "16","questionText":"16"}],
 							[{"questionId": "17","questionText":"17"},
-								{"questionId": "18","questionText":"18"}]
+								{"questionId": "18","questionText":"18"}],
 							[{"questionId": "19","questionText":"19"},
 								{"questionId": "20","questionText":"20"}],
 							]})
