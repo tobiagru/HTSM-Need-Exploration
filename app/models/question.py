@@ -7,7 +7,6 @@ class Question(db.Model):
     __tablename__ = 'questions'
     id = db.Column(db.Integer, primary_key=True)
     owner = db.Column(db.Integer)
-    users = db.relationship('User', backref='role', lazy='dynamic')
 
 class QuestionText(db.Model):
     __tablename__ = 'question_text'
