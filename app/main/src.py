@@ -12,18 +12,18 @@ from .. import db
 def build_questions(language="EN", owner=None):
 
 	#query 20 random questions
-	questionList = db.Question.query
-						.join(db.QuestionText)
-						.filter(QuestionText.language == language)
-						.order_by(rand())
-						.limit(10)
+	questionList = db.Question.query\
+						.join(db.QuestionText)\
+						.filter(QuestionText.language == language)\
+						.order_by(rand())\
+						.limit(10)\
 						.all()
 
-	questionList2 = db.Question.query
-						.join(db.QuestionText)
-						.filter(QuestionText.language == language)
-						.order_by(rand())
-						.limit(10)
+	questionList2 = db.Question.query\
+						.join(db.QuestionText)\
+						.filter(QuestionText.language == language)\
+						.order_by(rand())\
+						.limit(10)\
 						.all()
 	
 	questions = {}
