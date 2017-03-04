@@ -61,14 +61,12 @@ def fill_db():
 
 @manager.command
 def test_questions():
-    questionList = Question.query\
-                        .join(QuestionText)\
+    questionList = QuestionText.query\
                         .filter(QuestionText.language == 'EN')\
                         .order_by(func.rand())\
                         .limit(10)\
                         .all()
-    questionList2 = Question.query\
-                    .join(QuestionText)\
+    questionList2 = QuestionText.query\
                     .filter(QuestionText.language == 'EN')\
                     .order_by(func.rand())\
                     .limit(10)\
@@ -77,13 +75,11 @@ def test_questions():
     questions_tmp = []
     for question, question2 in zip(questionList, questionList2):
         print(question.__dict__)
-        print(str(question))
         print(question2.__dict__)
-        print(str(question2))
-        question_tpl = [{"questionId": question.QuestionText.questionId,
-                         "questionText": question.QuestionText.text},
-                        {"questionId": question2.QuestionText.questionId,
-                         "questionText": question2.QuestionText.text}]
+        question_tpl = [{"questionId": question.questionId,
+                         "questionText": question.text},
+                        {"questionId": question2.questionId,
+                         "questionText": question2.text}]
         questions_tmp.extend(question_tpl)
 
     questions = {"questions": questions_tmp}
