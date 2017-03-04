@@ -6,6 +6,7 @@ import json
 
 #import privat
 from .. import db
+from .. import models
 
 fail_questions = json.dumps({"questions":[
 							[{"questionId": "1","questionText":"1"},
@@ -36,21 +37,21 @@ def build_questions(language="EN", owner=None):
 
 	try:
 		#query 20 random questions
-		questionList = db.Question.query\
+		questionList = db.query(Question)\
 							.join(db.QuestionText)\
 							.filter(QuestionText.language == language)\
 							.order_by(rand())\
 							.limit(10)\
 							.all()
 
-		questionList2 = db.Question.query\
+		questionList2 = db.query(Question)\
 							.join(db.QuestionText)\
 							.filter(QuestionText.language == language)\
 							.order_by(rand())\
 							.limit(10)\
 							.all()
 	except:
-		print("Failed to load 20 questions from the database in src build_questions")
+		print("Failed to load 20 questions from the database")
 		return fail_questions
 	
 	questions = {}
@@ -82,12 +83,15 @@ def build_questions(language="EN", owner=None):
     # 	).limit(20).all()
 
 
-
 def getusertype():
 	random.randint(1,20)
 
 def save_answers(answers, owner=None):
-	parsed_answer = json.loads(answer)
+	try:
+		parsed_answer = json.loads(answer)
+	except:
+		print("failed to parse answer json")
+		return None
 
 	#Answer.bulk_insert_mappings(
 	#	[{'questionId' = parsed_answer[answer][questionId],
@@ -98,21 +102,52 @@ def save_answers(answers, owner=None):
 	#Answer.commit()
 
 	for answer in parsed_answer[answers]:
-		#save answer
+		#create new answer
 		try:
-			answer_tmp = Answer.insert().values(
-				questionId = parsed_answer[answer][questionId],
-				altQuestionId = parsed_answer[answer][altQuestionId],
-				answerValue = parsed_answer[answer][answerValue],
-				source = owner
-			)
-			#save metadata
-			for metaKey in parsed_answer[metadata]:
-				AnswerMeta.insert().values(
-					answerId = answer_tmp.id,
-					key = metaKey,
-					value = parsed_answer[metadata][metaKey]
+			new_answer = models.Answer(
+						questionId = parsed_answer[answer][questionId],
+						altQuestionId = parsed_answer[answer][altQuestionId],
+						answerValue = parsed_answer[answer][answerValue],
+						source = owner
 					)
 		except:
-			print("Failed to save answer in db")
-			return "fail"
+			print("not able to build answer")
+			continue
+
+		try:
+			#save answer to db
+			db.add(new_answer)
+			db.commit()
+			
+		except:
+			print("Failed to save answer in db for questionID {0}".format(parsed_answer[answer][questionId]))
+			continue
+		
+		try:
+			assert len(parsed_answer[metadata]) >= 1
+		except: AssertionError
+			print("no meta Data")
+			continue
+
+
+		for metaKey in parsed_answer[metadata]:
+			#create new meta data
+			try:
+				new_metadata = models.AnswerMeta(
+						answerId = new_answer,
+						key = metaKey,
+						value = parsed_answer[metadata][metaKey]
+					)
+			except:
+				print("not able to build metadata")
+				continue
+
+			try:
+				#save metadata
+				db.add(new_metadata)
+				db.commit()
+				#save metadata
+			except:
+				print("Failed to save metadata in dbfor questionID {0}".format(parsed_answer[answer][questionId]))
+				continue
+		
