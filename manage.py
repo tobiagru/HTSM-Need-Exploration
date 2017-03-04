@@ -52,9 +52,11 @@ def recreate_db():
     db.create_all()
     db.session.commit()
 
+
 @manager.command
 def fill_db():
     fill_the_db.fill_the_db()
+
 
 @manager.command
 def test_questions():
@@ -67,9 +69,12 @@ def test_questions():
     print(questionList)
     print(len(questionList))
 
+
 @manager.command
 def test_answers():
-    pass
+    print(Answer.query.order_by(Answer.id.desc()).first())
+    print(AnswerMeta.query.order_by(AnswerMeta.id.desc()).first())
+
 
 @manager.option(
     '-n',
