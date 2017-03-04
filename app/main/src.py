@@ -125,7 +125,7 @@ def save_answers(answers, owner=None):
 		
 		try:
 			assert len(parsed_answer[metadata]) >= 1
-		except: AssertionError
+		except AssertionError:
 			print("no meta Data")
 			continue
 
