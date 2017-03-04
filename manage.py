@@ -74,15 +74,26 @@ def test_questions():
                     .limit(10)\
                     .all()
 
-    questions = {"questions": [
-                    [
-                        {"questionId": question.questionId,
-                             "questionText": question.text},
+    questions_tmp = []
+    for question, question2 in zip(questionList, questionList2):
+        question_tpl = [{"questionId": question.questionId,
+                         "questionText": question.text},
                         {"questionId": question2.questionId,
-                             "questionText": question2.text}
-                    ] for question, question2 in zip(questionList, questionList2)
-                ]
-            }
+                         "questionText": question2.text}]
+        questions_tmp.extend(question_tpl)
+
+    questions = {"questions": questions_tmp}
+
+
+    # questions = {"questions": [
+    #                 [
+    #                     {"questionId": question.questionId,
+    #                          "questionText": question.text},
+    #                     {"questionId": question2.questionId,
+    #                          "questionText": question2.text}
+    #                 ] for question, question2 in zip(questionList, questionList2)
+    #             ]
+    #         }
 
     print(json.dumps(questions))
 
