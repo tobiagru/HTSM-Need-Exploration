@@ -64,6 +64,8 @@ def test_questions():
                         .order_by(func.rand())\
                         .limit(10)\
                         .all()
+    print questionList
+    print(len(questionsList))
 
 @manager.command
 def test_answers():
