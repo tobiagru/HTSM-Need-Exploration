@@ -35,18 +35,18 @@ adjectives = [
 			]
 
 nouns = [
-			"vehicle"
+			"movement",
 			"mobility"
 		]
 
 def fill_the_db():
 	try:
-		print Question.query().first()
+		print Question.query.first()
 	except:
 		print("no element in question")
 
 	try:
-		print QuestionText.query().first()
+		print QuestionText.query.first()
 	except:
 		print("no element in questionText")
 
