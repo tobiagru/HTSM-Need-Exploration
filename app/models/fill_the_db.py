@@ -40,6 +40,16 @@ nouns = [
 		]
 
 def fill_the_db():
+	try:
+		print Question.query().first()
+	except:
+		print("no element in question")
+
+	try:
+		print QuestionText.query().first()
+	except:
+		print("no element in questionText")
+
 	for adjective in adjectives:
 		for noun in nouns:
 			#cotry:
