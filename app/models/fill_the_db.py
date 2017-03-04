@@ -1,5 +1,5 @@
 from .. import db 
-from .. import models
+from ..models import Question, QuestionText
 
 adjectives = [
 				"fast",
@@ -43,10 +43,10 @@ def fill_the_db():
 	for adjective in adjectives:
 		for noun in nouns:
 			#cotry:
-				new_question = models.Question(owner = "FB")
+				new_question = Question(owner = "FB")
 				db.session.add(new_question)
 				db.session.commit()
-				new_questionText = models.QuestionText(questionId = new_question,
+				new_questionText = QuestionText(questionId = new_question,
 										language = "EN",
 										text = adjective + " " +noun)
 				db.session.add(new_questionText)

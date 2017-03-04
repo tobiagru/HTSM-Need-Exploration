@@ -6,7 +6,7 @@ import json
 
 #import privat
 from .. import db
-from .. import models
+from ..models import Question, Answer, AnswerMeta, QuestionText
 
 fail_questions = json.dumps({"questions":[
 							[{"questionId": "1","questionText":"1"},
@@ -34,18 +34,18 @@ fail_questions = json.dumps({"questions":[
 #build a json object with 10 questions where every
 # questions has questionsID, option1 and option2
 def build_questions(language="EN", owner=None):
-
+	db.session
 	try:
 		#query 20 random questions
-		questionList = db.query(Question)\
-							.join(db.QuestionText)\
+		questionList = Question.query\
+							.join(QuestionText)\
 							.filter(QuestionText.language == language)\
 							.order_by(rand())\
 							.limit(10)\
 							.all()
 
-		questionList2 = db.query(Question)\
-							.join(db.QuestionText)\
+		questionList2 = Question.query\
+							.join(QuestionText)\
 							.filter(QuestionText.language == language)\
 							.order_by(rand())\
 							.limit(10)\
@@ -104,7 +104,7 @@ def save_answers(answers, owner=None):
 	for answer in parsed_answer[answers]:
 		#create new answer
 		try:
-			new_answer = models.Answer(
+			new_answer = Answer(
 						questionId = parsed_answer[answer][questionId],
 						altQuestionId = parsed_answer[answer][altQuestionId],
 						answerValue = parsed_answer[answer][answerValue],
@@ -116,8 +116,8 @@ def save_answers(answers, owner=None):
 
 		try:
 			#save answer to db
-			db.add(new_answer)
-			db.commit()
+			db.session.add(new_answer)
+			db.session.commit()
 			
 		except:
 			print("Failed to save answer in db for questionID {0}".format(parsed_answer[answer][questionId]))
@@ -133,7 +133,7 @@ def save_answers(answers, owner=None):
 		for metaKey in parsed_answer[metadata]:
 			#create new meta data
 			try:
-				new_metadata = models.AnswerMeta(
+				new_metadata = AnswerMeta(
 						answerId = new_answer,
 						key = metaKey,
 						value = parsed_answer[metadata][metaKey]
