@@ -76,11 +76,11 @@ def test_questions():
 
     questions_tmp = []
     for question, question2 in zip(questionList, questionList2):
-        print(question)
-        question_tpl = [{"questionId": question.questionId,
-                         "questionText": question.text},
-                        {"questionId": question2.questionId,
-                         "questionText": question2.text}]
+        print(question.__dict__)
+        question_tpl = [{"questionId": question.QuestionText.questionId,
+                         "questionText": question.QuestionText.text},
+                        {"questionId": question2.QuestionText.questionId,
+                         "questionText": question2.QuestionText.text}]
         questions_tmp.extend(question_tpl)
 
     questions = {"questions": questions_tmp}
