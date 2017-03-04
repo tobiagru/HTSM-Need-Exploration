@@ -11,7 +11,7 @@ from rq import Connection, Queue, Worker
 from app import create_app, db
 from app.models import Role, User, fill_the_db, Question, QuestionText, Answer, AnswerMeta
 
-
+from sqlalchemy.sql.expression import func,
 
 if os.path.exists('config.env'):
     print('Importing environment from .env file')
@@ -61,8 +61,9 @@ def test_questions():
     questionList = Question.query\
                         .join(QuestionText)\
                         .filter(QuestionText.language == 'EN')\
-                        .order_by(rand())\
-                        .all().limit(10)
+                        .order_by(func.rand())\
+                        .limit(10)\
+                        .all()
 
 @manager.command
 def test_answers():
