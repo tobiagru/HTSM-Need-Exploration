@@ -9,7 +9,7 @@ from redis import Redis
 from rq import Connection, Queue, Worker
 
 from app import create_app, db
-from app.models import Role, User, fill_the_db
+from app.models import Role, User, fill_the_db, Question, QuestionText, Answer, AnswerMeta
 
 
 
@@ -55,6 +55,18 @@ def recreate_db():
 @manager.command
 def fill_db():
     fill_the_db.fill_the_db()
+
+@manager.command
+def test_questions():
+    questionList = Question.query\
+                        .join(QuestionText)\
+                        .filter(QuestionText.language == language)\
+                        .order_by(rand())\
+                        .all().limit(10)
+
+@manager.command
+def test_answers():
+    pass
 
 @manager.option(
     '-n',
