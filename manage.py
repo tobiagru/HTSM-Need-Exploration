@@ -12,6 +12,7 @@ from app import create_app, db
 from app.models import Role, User, fill_the_db, Question, QuestionText, Answer, AnswerMeta
 
 from sqlalchemy.sql.expression import func
+import json
 
 if os.path.exists('config.env'):
     print('Importing environment from .env file')
@@ -66,8 +67,24 @@ def test_questions():
                         .order_by(func.rand())\
                         .limit(10)\
                         .all()
-    print(questionList)
-    print(len(questionList))
+    questionList2 = Question.query\
+                    .join(QuestionText)\
+                    .filter(QuestionText.language == 'EN')\
+                    .order_by(func.rand())\
+                    .limit(10)\
+                    .all()
+
+    questions = {"questions": [
+                    [
+                        {"questionId": question.questionId,
+                             "questionText": question.text},
+                        {"questionId": question2.questionId,
+                             "questionText": question2.text}
+                    ] for question, question2 in zip(questionList, questionList2)
+                ]
+            }
+
+    print(json.dumps(questions))
 
 
 @manager.command
