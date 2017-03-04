@@ -39,12 +39,13 @@ def build_questions(language='EN', owner=None):
 	try:
 		#query 20 random questions
 		questionList = QuestionText.query\
-                        .filter(QuestionText.language == 'EN')\
+                        .filter(QuestionText.language == language)\
                         .order_by(func.rand())\
                         .limit(10)\
                         .all()
+ 
 	    questionList2 = QuestionText.query\
-	                    .filter(QuestionText.language == 'EN')\
+	                    .filter(QuestionText.language == language)\
 	                    .order_by(func.rand())\
 	                    .limit(10)\
 	                    .all()
