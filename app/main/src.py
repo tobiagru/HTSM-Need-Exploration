@@ -3,6 +3,7 @@ import random
 import json
 
 #import public
+from sqlalchemy.sql.expression import func
 
 #import privat
 from .. import db
@@ -33,21 +34,21 @@ fail_questions = json.dumps({"questions":[
 
 #build a json object with 10 questions where every
 # questions has questionsID, option1 and option2
-def build_questions(language="EN", owner=None):
+def build_questions(language='EN', owner=None):
 	db.session
 	try:
 		#query 20 random questions
 		questionList = Question.query\
 							.join(QuestionText)\
 							.filter(QuestionText.language == language)\
-							.order_by(rand())\
+							.order_by(func.rand())\
 							.limit(10)\
 							.all()
 
 		questionList2 = Question.query\
 							.join(QuestionText)\
 							.filter(QuestionText.language == language)\
-							.order_by(rand())\
+							.order_by(func.rand())\
 							.limit(10)\
 							.all()
 	except:
