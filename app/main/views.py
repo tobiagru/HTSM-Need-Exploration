@@ -11,7 +11,7 @@ import src
 
 @main.route('/')
 def index():
-     return redirect(url_for('static'))
+     return redirect(url_for('static', filename = "index.html"))
 
 #returns: questions
 @main.route('/getquestion', methods=['GET', 'POST'])
