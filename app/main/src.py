@@ -60,9 +60,9 @@ def build_questions(language="EN", owner=None):
 		questions["questions"] = [ 
 				[ 
 					{"questionId":question.questionId,
-						 "questionText":question.questionText},
+						 "questionText":question.text},
 					{"questionId":question2.questionId,
-						 "questionText":question2.questionText}
+						 "questionText":question2.text}
 				] for question, question2 in zip(questionList, questionList2)
 			]
 	except:
@@ -134,7 +134,7 @@ def save_answers(answers, owner=None):
 			#create new meta data
 			try:
 				new_metadata = AnswerMeta(
-						answerId = new_answer,
+						answerId = new_answer.id,
 						key = metaKey,
 						value = parsed_answer[metadata][metaKey]
 					)
