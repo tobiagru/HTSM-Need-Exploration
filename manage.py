@@ -76,6 +76,7 @@ def test_questions():
 
     questions_tmp = []
     for question, question2 in zip(questionList, questionList2):
+        print(question)
         question_tpl = [{"questionId": question.questionId,
                          "questionText": question.text},
                         {"questionId": question2.questionId,
