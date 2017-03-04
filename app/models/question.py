@@ -13,4 +13,4 @@ class QuestionText(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     questionId = db.Column(db.Integer, db.ForeignKey(Question.id))
     language = db.Column(db.String(8),default='EN')
-    text = db.Column(db.UnicodeText)
+    text = db.Column(db.String(255))
