@@ -42,7 +42,7 @@ nouns = [
 def fill_the_db():
 	for adjective in adjectives:
 		for noun in nouns:
-			try:
+			#try:
 				new_question = models.Question(owner = "FB")
 				db.add(new_question)
 				db.commit()
@@ -51,5 +51,5 @@ def fill_the_db():
 										text = adjective + " " +noun)
 				db.add(new_questionText)
 				db.commit()
-			except:
-				print("failed to save questions to Question DB")
+			#except:
+			#	print("failed to save questions to Question DB")
