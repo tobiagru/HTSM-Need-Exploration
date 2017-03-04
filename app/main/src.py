@@ -38,34 +38,30 @@ def build_questions(language='EN', owner=None):
 	db.session
 	try:
 		#query 20 random questions
-		questionList = Question.query\
-							.join(QuestionText)\
-							.filter(QuestionText.language == language)\
-							.order_by(func.rand())\
-							.limit(10)\
-							.all()
-
-		questionList2 = Question.query\
-							.join(QuestionText)\
-							.filter(QuestionText.language == language)\
-							.order_by(func.rand())\
-							.limit(10)\
-							.all()
+		questionList = QuestionText.query\
+                        .filter(QuestionText.language == 'EN')\
+                        .order_by(func.rand())\
+                        .limit(10)\
+                        .all()
+	    questionList2 = QuestionText.query\
+	                    .filter(QuestionText.language == 'EN')\
+	                    .order_by(func.rand())\
+	                    .limit(10)\
+	                    .all()
 	except:
 		print("Failed to load 20 questions from the database")
 		return fail_questions
-	
-	questions = {}
 
 	try:
-		questions["questions"] = [ 
-				[ 
-					{"questionId":question.questionId,
-						 "questionText":question.text},
-					{"questionId":question2.questionId,
-						 "questionText":question2.text}
-				] for question, question2 in zip(questionList, questionList2)
-			]
+		questions = {"questions": [ 
+					[ 
+						{"questionId":question.questionId,
+							 "questionText":question.text},
+						{"questionId":question2.questionId,
+							 "questionText":question2.text}
+					] for question, question2 in zip(questionList, questionList2)
+				]
+			}
 	except:
 		print("Failed to turn list of 20 questions into 10 tuples of 2 questions")
 		return fail_questions
