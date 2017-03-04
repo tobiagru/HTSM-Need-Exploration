@@ -60,7 +60,7 @@ def fill_db():
 def test_questions():
     questionList = Question.query\
                         .join(QuestionText)\
-                        .filter(QuestionText.language == language)\
+                        .filter(QuestionText.language == 'EN')\
                         .order_by(rand())\
                         .all().limit(10)
 
