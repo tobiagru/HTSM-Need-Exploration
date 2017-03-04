@@ -56,8 +56,8 @@ def fill_the_db():
 				new_question = Question(owner = "FB")
 				db.session.add(new_question)
 				db.session.commit()
-				new_questionText = QuestionText(questionId = new_question,
-										language = "EN",
+				new_questionText = QuestionText(questionId = new_question.id
+										language = 'EN',
 										text = adjective + " " +noun)
 				db.session.add(new_questionText)
 				db.session.commit()
