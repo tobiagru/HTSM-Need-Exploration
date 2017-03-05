@@ -42,7 +42,7 @@ $(document).ready(function(){
 	};
 
 	function generateQuestion(questionsPair){
-		$('.question-wrapper').append('<div class="row decision-wrapper" data-id1="'+ questionsPair[0].questionId +'" data-id2="'+ questionsPair[1].questionId +'"><div class="col-md-5 option-wrapper" data-id="'+ questionsPair[0].questionId +'" >'+ questionsPair[0].questionDescription +'</div><div class="col-md-2" style="padding-top: 20px;">OR</div><div class="col-md-5 option-wrapper" data-id="'+ questionsPair[1].questionId +'" >'+ questionsPair[1].questionDescription +'</div></div>');
+		$('.question-wrapper').append('<div class="row decision-wrapper" data-id1="'+ questionsPair[0].questionId +'" data-id2="'+ questionsPair[1].questionId +'"><div class="col-md-5 option-wrapper" data-id="'+ questionsPair[0].questionId +'" >'+ questionsPair[0].questionText +'</div><div class="col-md-2" style="padding-top: 20px;">OR</div><div class="col-md-5 option-wrapper" data-id="'+ questionsPair[1].questionId +'" >'+ questionsPair[1].questionText +'</div></div>');
 	}
 
 
