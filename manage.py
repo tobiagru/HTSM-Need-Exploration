@@ -9,7 +9,10 @@ from redis import Redis
 from rq import Connection, Queue, Worker
 
 from app import create_app, db
-from app.models import Role, User
+from app.models import Role, User, fill_the_db, Question, QuestionText, Answer, AnswerMeta
+
+from sqlalchemy.sql.expression import func
+import json
 
 if os.path.exists('config.env'):
     print('Importing environment from .env file')
@@ -49,6 +52,56 @@ def recreate_db():
     db.drop_all()
     db.create_all()
     db.session.commit()
+
+
+@manager.command
+def fill_db():
+    fill_the_db.fill_the_db()
+
+
+@manager.command
+def test_questions():
+    questionList = QuestionText.query\
+                        .filter(QuestionText.language == 'EN')\
+                        .order_by(func.rand())\
+                        .limit(10)\
+                        .all()
+    questionList2 = QuestionText.query\
+                    .filter(QuestionText.language == 'EN')\
+                    .order_by(func.rand())\
+                    .limit(10)\
+                    .all()
+
+    questions_tmp = []
+    for question, question2 in zip(questionList, questionList2):
+        print(question.__dict__)
+        print(question2.__dict__)
+        question_tpl = [{"questionId": question.questionId,
+                         "questionText": question.text},
+                        {"questionId": question2.questionId,
+                         "questionText": question2.text}]
+        questions_tmp.extend(question_tpl)
+
+    questions = {"questions": questions_tmp}
+
+
+    # questions = {"questions": [
+    #                 [
+    #                     {"questionId": question.questionId,
+    #                          "questionText": question.text},
+    #                     {"questionId": question2.questionId,
+    #                          "questionText": question2.text}
+    #                 ] for question, question2 in zip(questionList, questionList2)
+    #             ]
+    #         }
+
+    print(json.dumps(questions))
+
+
+@manager.command
+def test_answers():
+    print(Answer.query.order_by(Answer.id.desc()).first())
+    print(AnswerMeta.query.order_by(AnswerMeta.id.desc()).first())
 
 
 @manager.option(

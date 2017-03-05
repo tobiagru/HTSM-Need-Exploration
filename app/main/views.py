@@ -1,7 +1,7 @@
 #import core
 
 #import public
-from flask import render_template, request
+from flask import render_template, request, Flask, redirect, url_for
 
 #import privat
 from . import main
@@ -11,7 +11,7 @@ import src
 
 @main.route('/')
 def index():
-    return render_template('main/index.html')
+     return redirect(url_for('static', filename = "index.html"))
 
 #returns: questions
 @main.route('/getquestion', methods=['GET', 'POST'])
