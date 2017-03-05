@@ -104,46 +104,52 @@ $(document).ready(function(){
 
 	$(document).on('click', '.starttestbutton', function(){ 
 
-		
-		questions = {
-			"questions": [
-							[
-								{
-									"questionId": "23",
-									"questionDescription":"Self-Driving"
-								},
-								{
-									"questionId": "25",
-									"questionDescription":"Flying Car"
-								}
-							],
-							[
+		$.get( "http://www.needseeker.io/getquestion", function( data ) {
+		 console.log(data);
+		 questions = data;
 
-								{
-									"questionId": "31",
-									"questionDescription": "Fast Car"
-								},
-								{
-									"questionId": "32",
-									"questionDescription": "Slow Car"
-								}
+
+
+		  /*
+			questions = {
+				"questions": [
+								[
+									{
+										"questionId": "23",
+										"questionDescription":"Self-Driving"
+									},
+									{
+										"questionId": "25",
+										"questionDescription":"Flying Car"
+									}
+								],
+								[
+
+									{
+										"questionId": "31",
+										"questionDescription": "Fast Car"
+									},
+									{
+										"questionId": "32",
+										"questionDescription": "Slow Car"
+									}
+								]
 							]
-						]
-				
-		};
-		$.get( "ajax/test.html", function( data ) {
-		  $( ".result" ).html( data );
-		  alert( "Load was performed." );
-		});
+					
+			};*/
 
-		console.log(questions);
-		numberOfQuestionsPairs = questions.questions.length;
+			
+
+			console.log(questions);
+			numberOfQuestionsPairs = questions.questions.length;
+			
+
+			generateQuestion(questions.questions[numberOfQuestionsPairsCounter]);
+			numberOfQuestionsPairsCounter++;
+	    	$('.start-wrapper').hide();
+	    	$('.question-wrapper').show();
+			});
 		
-
-		generateQuestion(questions.questions[numberOfQuestionsPairsCounter]);
-		numberOfQuestionsPairsCounter++;
-    	$('.start-wrapper').hide();
-    	$('.question-wrapper').show();
     });
 	
 });
