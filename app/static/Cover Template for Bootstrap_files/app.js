@@ -140,11 +140,11 @@ $(document).ready(function(){
 
 			
 
-			console.log("question:" + questions["questions"][0][0]);
-
-
-			numberOfQuestionsPairs = questions.length;
 			
+
+
+			numberOfQuestionsPairs = questions["questions"].length;
+			console.log("length:" + numberOfQuestionsPairs);
 		
 			generateQuestion(questions[numberOfQuestionsPairsCounter]);
 			numberOfQuestionsPairsCounter++;
