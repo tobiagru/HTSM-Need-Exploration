@@ -140,7 +140,7 @@ $(document).ready(function(){
 
 			
 
-			console.log(questions);
+			console.log(questions[0][1]);
 			numberOfQuestionsPairs = questions.length;
 			
 			console.log(questions[numberOfQuestionsPairsCounter]);
