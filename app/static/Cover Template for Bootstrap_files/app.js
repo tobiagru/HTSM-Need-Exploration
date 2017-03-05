@@ -140,7 +140,7 @@ $(document).ready(function(){
 
 			
 
-			console.log("question:" + questions.questions);
+			console.log("question:" + questions["questions"]);
 
 
 			numberOfQuestionsPairs = questions.length;
