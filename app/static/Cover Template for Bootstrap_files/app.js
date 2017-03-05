@@ -104,7 +104,7 @@ $(document).ready(function(){
 
 	$(document).on('click', '.starttestbutton', function(){ 
 
-		//GET Answers 
+		
 		questions = {
 			"questions": [
 							[
@@ -131,6 +131,10 @@ $(document).ready(function(){
 						]
 				
 		};
+		$.get( "ajax/test.html", function( data ) {
+		  $( ".result" ).html( data );
+		  alert( "Load was performed." );
+		});
 
 		console.log(questions);
 		numberOfQuestionsPairs = questions.questions.length;
