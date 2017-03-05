@@ -84,9 +84,7 @@ $(document).ready(function(){
 		
 
     	if(numberOfQuestionsPairsCounter<numberOfQuestionsPairs){
-    		
-    		console.log("here");
-   			generateQuestion(questions[numberOfQuestionsPairsCounter]);
+   			generateQuestion(questions["questions"][numberOfQuestionsPairsCounter]);
    			numberOfQuestionsPairsCounter++;
    		} else {
 			//POST Request here
