@@ -80,7 +80,7 @@ $(document).ready(function(){
 		result.answers.push({answer});
 
 		$('.decision-wrapper').remove();
-
+console.log("here");
 		
 
     	if(numberOfQuestionsPairsCounter<numberOfQuestionsPairs){
