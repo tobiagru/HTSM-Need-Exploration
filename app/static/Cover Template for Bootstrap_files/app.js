@@ -146,7 +146,7 @@ $(document).ready(function(){
 			numberOfQuestionsPairs = questions["questions"].length;
 			console.log("length:" + numberOfQuestionsPairs);
 		
-			generateQuestion(questions[numberOfQuestionsPairsCounter]);
+			generateQuestion(questions["questions"][numberOfQuestionsPairsCounter]);
 			numberOfQuestionsPairsCounter++;
 	    	$('.start-wrapper').hide();
 	    	$('.question-wrapper').show();
