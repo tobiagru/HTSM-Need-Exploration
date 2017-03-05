@@ -102,7 +102,7 @@ $(document).ready(function(){
 
 	$(document).on('click', '.starttestbutton', function(){ 
 
-		$.get( "http://www.needseeker.io/getquestion", function( data ) {
+		$.get( "http://quiz.needseeker.io/getquestion", function( data ) {
 		 console.log(data);
 		 questions = JSON.parse(data);
 
