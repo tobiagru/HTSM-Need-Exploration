@@ -106,7 +106,7 @@ $(document).ready(function(){
 
 		$.get( "http://www.needseeker.io/getquestion", function( data ) {
 		 console.log(data);
-		 questions = jQuery.parseJSON(data);
+		 questions = JSON.parseJSON(data);
 
 
 
