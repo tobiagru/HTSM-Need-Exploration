@@ -86,7 +86,7 @@ $(document).ready(function(){
     	if(numberOfQuestionsPairsCounter<numberOfQuestionsPairs){
     		
 
-   			generateQuestion(questions.questions[numberOfQuestionsPairsCounter]);
+   			generateQuestion(questions[numberOfQuestionsPairsCounter]);
    			numberOfQuestionsPairsCounter++;
    		} else {
 			//POST Request here
@@ -144,7 +144,7 @@ $(document).ready(function(){
 			numberOfQuestionsPairs = questions.length;
 			
 
-			generateQuestion(questions.questions[numberOfQuestionsPairsCounter]);
+			generateQuestion(questions[numberOfQuestionsPairsCounter]);
 			numberOfQuestionsPairsCounter++;
 	    	$('.start-wrapper').hide();
 	    	$('.question-wrapper').show();
