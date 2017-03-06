@@ -91,7 +91,7 @@ $(document).ready(function(){
 			result.metadata["lang"]="de";
 			result.metadata["country"]="Switzerland";
 			console.log(result);
-			$.post( "ajax/test.html", function( data ) {
+			$.post( "http://quiz.needseeker.io/postanswer", function( data ) {
 				console.log("successful post");
 				$('.question-div').remove();
 				$('.decision-wrapper').remove();
