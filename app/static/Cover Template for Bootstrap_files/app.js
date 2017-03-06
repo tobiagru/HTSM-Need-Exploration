@@ -80,7 +80,7 @@ $(document).ready(function(){
 			result.metadata["country"]="Switzerland";
 			console.log( JSON.stringify(result));
 
-			var answers = data
+			var answers = result
 			$.post( "http://quiz.needseeker.io/postanswer", function( answers ) {
 				console.log("successful post");
 				$('.question-div').remove();
