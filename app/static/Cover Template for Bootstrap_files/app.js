@@ -1,4 +1,11 @@
 $(document).ready(function(){
+
+	// Check FB Login Status
+	FB.getLoginStatus(function(response) {
+    	statusChangeCallback(response);
+	});
+
+
 	/*
 
 		var response = {
