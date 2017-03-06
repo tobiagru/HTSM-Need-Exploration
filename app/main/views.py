@@ -14,46 +14,22 @@ def index():
      return redirect(url_for('static', filename = "index.html"))
 
 #returns: questions
-@main.route('/getquestion', methods=['GET'])
+@main.route('/getquestion', methods=['GET', 'POST'])
 def getquestion():
 	if request.method == 'POST':
 		return src.build_questions(
-			language = request.form['language']
+			language = request.get_json()['language']
 		)
 	if request.method == 'GET':
 		return src.build_questions()
-
-'''
-#returns: questions
-@main.route('/getquestion/<owner>', methods=['GET', 'POST'])
-def getquestion():
-	if request.method == 'POST':
-		return build_questions(
-			language = request.form['language'],
-			owner = owner
-		)
-	if request.method == 'GET':
-		return build_questions(
-			language = "EN",
-			owner = owner)
-'''
 
 #recieve: answers, asnwer_meta
 #return: usertype
 @main.route('/postanswer', methods=['POST'])
 def postanswer():
-	src.save_answers(request.get_json())
-	return src.getusertype()
-
-'''
-#recieve: answers, asnwer_meta
-#return: usertype
-@main.route('/postanswer/<owner>', methods=['GET', 'POST'])
-def postanswer():
-	if request.method == 'POST':
-		save_answers(request.form['answers'], owner)
-		return getusertype()
-'''
+	return "test"
+	# src.save_answers(request.get_json())
+	# return src.getusertype()
 
 #return: ...
 @main.route('/analytics')
