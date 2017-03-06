@@ -1,18 +1,6 @@
-
-
 $(document).ready(function(){
-
-		
-
-	
-
 	/*
-	var question1 = {option1: "Self-Driving Car", option2: "Swimming Car"};
-	var question2 = {option1: "BMW Car", option2: "Tesla Car"};
-	var question3 = {option1: "Gasoline Car", option2: "Electric Car"};
-	var question4 = {option1: "Fast Car", option2: "Safe Car"};
 
-	var questions = [question1, question2, question3, question4];
 		var response = {
 		"answers": [
 			{
@@ -90,7 +78,7 @@ $(document).ready(function(){
 			//POST Request here
 			result.metadata["lang"]="de";
 			result.metadata["country"]="Switzerland";
-			console.log(result);
+			console.log( JSON.stringify(result));
 			$.post( "http://quiz.needseeker.io/postanswer", function( data ) {
 				console.log("successful post");
 				$('.question-div').remove();
