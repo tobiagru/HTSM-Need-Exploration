@@ -27,9 +27,12 @@ def getquestion():
 #return: usertype
 @main.route('/postanswer', methods=['POST'])
 def postanswer():
-	return "test"
-	# src.save_answers(request.get_json())
-	# return src.getusertype()
+	if request.is_json:
+	 	src.save_answers(request.get_json())
+	 	#return src.getusertype()
+	else:
+		#return "error: request was not json"
+	
 
 #return: ...
 @main.route('/analytics')
