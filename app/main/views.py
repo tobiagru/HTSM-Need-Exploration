@@ -14,7 +14,7 @@ def index():
      return redirect(url_for('static', filename = "index.html"))
 
 #returns: questions
-@main.route('/getquestion', methods=['GET', 'POST'])
+@main.route('/getquestion', methods=['GET'])
 def getquestion():
 	if request.method == 'POST':
 		return src.build_questions(
@@ -40,11 +40,10 @@ def getquestion():
 
 #recieve: answers, asnwer_meta
 #return: usertype
-@main.route('/postanswer', methods=['GET', 'POST'])
+@main.route('/postanswer', methods=['POST'])
 def postanswer():
-	if request.method == 'POST':
-		src.save_answers(request.form['answers'])
-		return src.getusertype()
+	src.save_answers(request.get_json())
+	return src.getusertype()
 
 '''
 #recieve: answers, asnwer_meta
