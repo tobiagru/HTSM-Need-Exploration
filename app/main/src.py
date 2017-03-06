@@ -4,6 +4,7 @@ import json
 
 #import public
 from sqlalchemy.sql.expression import func
+from flask import jsonify
 
 #import privat
 from .. import db
@@ -32,6 +33,7 @@ fail_questions = json.dumps({"questions":[
 								{"questionId": "20", "questionText": "20"}],
 							]})
 
+
 # build a json object with 10 questions where every
 # questions has questionsID, option1 and option2
 def build_questions(language='EN', owner=None):
@@ -48,43 +50,44 @@ def build_questions(language='EN', owner=None):
 						.order_by(func.rand())\
 						.limit(10)\
 						.all()
-
 	except:
 		print("Failed to load 20 questions from the database")
 		return fail_questions
 
 	try:
-		questions = {"questions": [
-					[
-						{"questionId": question.questionId,
-							"questionText": question.text},
-						{"questionId": question2.questionId,
-							"questionText": question2.text}
-					] for question, question2 in zip(questionList, questionList2)
-				]
-			}
+		questions = {"questions":
+						[
+							[
+								{"questionId": question.questionId,
+									"questionText": question.text},
+								{"questionId": question2.questionId,
+									"questionText": question2.text}
+							] for question, question2 in zip(questionList, questionList2)
+						]
+					}
 	except:
 		print("Failed to turn list of 20 questions into 10 tuples of 2 questions")
 		return fail_questions
 
 	try:
-		return json.dumps(questions)
+		return jsonify(questions)
 	except:
 		print("failed to convert dict of questions to json")
 		return fail_questions
 
 
 def getusertype():
-	random.randint(1,20)
+	random.randint(1, 20)
+
 
 def save_answers(answers, owner=None):
-	for answer in answers["answer"]:
+	for answer in answers["answers"]:
 		#create new answer
 		try:
 			new_answer = Answer(
-						questionId=answer["questionId"],
-						altQuestionId=answer["altQuestionId"],
-						answerValue=answer["answerValue"],
+						questionId=answer["answer"]["questionId"],
+						altQuestionId=answer["answer"]["altQuestionId"],
+						answerValue=answer["answer"]["answerValue"],
 						source=owner
 					)
 		except:
@@ -97,7 +100,7 @@ def save_answers(answers, owner=None):
 			db.session.commit()
 			
 		except:
-			print("Failed to save answer in db for questionID {0}".format(answer["questionId"]))
+			print("Failed to save answer in db for questionID {0}".format(answer["answer"]["questionId"]))
 			continue
 		
 		try:

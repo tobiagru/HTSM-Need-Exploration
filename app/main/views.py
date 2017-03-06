@@ -29,9 +29,9 @@ def getquestion():
 def postanswer():
 	if request.is_json:
 	 	src.save_answers(request.get_json())
-	 	#return src.getusertype()
+	 	return src.getusertype()
 	else:
-		#return "error: request was not json"
+		return "error: request was not json"
 	
 
 #return: ...
