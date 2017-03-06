@@ -71,15 +71,13 @@
   }
 
   window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '1831659383816415',
-      cookie     : true,  // enable cookies to allow the server to access 
+  FB.init({
+    appId      : '{your-app-id}',
+    cookie     : true,  // enable cookies to allow the server to access 
                         // the session
-      xfbml      : true,
-      version    : 'v2.8'
-    });
-    FB.AppEvents.logPageView();
-  };
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.8' // use graph api version 2.8
+  });
 
   // Now that we've initialized the JavaScript SDK, we call 
   // FB.getLoginStatus().  This function gets the state of the
@@ -132,6 +130,8 @@
 <div id="status">
 </div>
 
+
+
 </div>
 
 
@@ -150,8 +150,7 @@
               </nav>
             </div>
           </div>
-          <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
+       
           <div class="inner cover start-wrapper">
           <div class="row">
             <div class="start-title">Do you know what you need?</div>
