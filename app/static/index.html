@@ -124,11 +124,7 @@
   the FB.login() function when clicked.
 -->
 
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
 
-<div id="status">
-</div>
 
 
 
@@ -152,6 +148,11 @@
           </div>
        
           <div class="inner cover start-wrapper">
+          <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+          </fb:login-button>
+
+          <div id="status">
+          </div>
           <div class="row">
             <div class="start-title">Do you know what you need?</div>
           </div>
