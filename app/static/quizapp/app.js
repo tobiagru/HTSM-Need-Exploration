@@ -15,7 +15,7 @@ $(document).ready(function(){
 	    }
 	})
 
-	/*
+	/*len
 
 		var response = {
 		"answers": [
