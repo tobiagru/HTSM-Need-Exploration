@@ -11,7 +11,7 @@ import src
 
 @main.route('/')
 def index():
-     return redirect(url_for('static', filename = "index.html"))
+     return render_template('main/quizapp.html')
 
 #returns: questions
 @main.route('/getquestion', methods=['GET', 'POST'])
@@ -32,7 +32,7 @@ def postanswer():
 	 	return src.getusertype()
 	else:
 		return "error: request was not json"
-	
+
 
 #return: ...
 @main.route('/analytics')

@@ -1,28 +1,35 @@
 <!DOCTYPE html>
-<!-- saved from url=(0039)http://getbootstrap.com/examples/cover/ -->
 <html lang="en" class="gr__getbootstrap_com"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="needseeker">
     <link rel="icon" href="http://getbootstrap.com/favicon.ico">
 
-    <title>What are you</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon/favicon-32x32.png') }}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}" sizes="16x16">
+    <link rel="manifest" href="{{ url_for('static', filename='favicon/manifest.json') }}">
+    <link rel="mask-icon" href="{{ url_for('static', filename='favicon/safari-pinned-tab.svg') }}" color="#000000">
+    <meta name="apple-mobile-web-app-title" content="needseeker">
+    <meta name="application-name" content="needseeker">
+    <meta name="theme-color" content="#000000">
+
+    <title>What are you?</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="./Cover Template for Bootstrap_files/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='quizapp/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="./Cover Template for Bootstrap_files/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='quizapp/ie10-viewport-bug-workaround.css') }}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="./Cover Template for Bootstrap_files/cover.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='quizapp/cover.css') }}" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="./Cover Template for Bootstrap_files/ie-emulation-modes-warning.js"></script>
+    <script src="{{ url_for('static', filename='quizapp/ie-emulation-modes-warning.js') }}"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -157,7 +164,7 @@
 
           <div class="mastfoot">
             <div class="inner">
-              <p>Copyright 2017 | Needseeker</p>
+              <p>Copyright 2017 | needseeker</p>
             </div>
           </div>
 
@@ -170,12 +177,12 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="./Cover Template for Bootstrap_files/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='quizapp/jquery.min.js') }}"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="./Cover Template for Bootstrap_files/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='quizapp/bootstrap.min.js') }}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="./Cover Template for Bootstrap_files/ie10-viewport-bug-workaround.js"></script>
-     <script src="./Cover Template for Bootstrap_files/app.js"></script>
+    <script src="{{ url_for('static', filename='quizapp/ie10-viewport-bug-workaround.js') }}"></script>
+     <script src="{{ url_for('static', filename='quizapp/app.js') }}"></script>
 
 
 </body></html>
