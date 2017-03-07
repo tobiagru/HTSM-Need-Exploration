@@ -4,7 +4,16 @@ $(document).ready(function(){
 	FB.getLoginStatus(function(response) {
     	statusChangeCallback(response);
 	});
+/* prepare for csrf token*/
+	var csrftoken = $('meta[name=csrf-token]').attr('content')
 
+	$.ajaxSetup({
+	    beforeSend: function(xhr, settings) {
+	        if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+	            xhr.setRequestHeader("X-CSRFToken", csrftoken)
+	        }
+	    }
+	})
 
 	/*
 
@@ -60,7 +69,7 @@ $(document).ready(function(){
 		} else {
 			question2status = false;
 		}
-		
+
 
 
 		var notClickedId = $(this).data('id');
@@ -76,7 +85,7 @@ $(document).ready(function(){
 
 		$('.decision-wrapper').remove();
 
-		
+
 
     	if(numberOfQuestionsPairsCounter<numberOfQuestionsPairs){
    			generateQuestion(questions["questions"][numberOfQuestionsPairsCounter]);
@@ -96,12 +105,12 @@ $(document).ready(function(){
 				$('.question-wrapper').append('<div class="row"><div class="col-md-12 "><img src="./img/badgeimage2.png"></div>');
 				$('.question-wrapper').append('<div class="row"><div class="col-md-12 share-botton"><img src="./img/s_fb_button.png"></div>');
 			});
-			
+
 		}
-	}); 
+	});
 
 
-	$(document).on('click', '.starttestbutton', function(){ 
+	$(document).on('click', '.starttestbutton', function(){
 
 		$.get( "http://quiz.needseeker.io/getquestion", function( data ) {
 		 console.log(data);
@@ -134,23 +143,23 @@ $(document).ready(function(){
 									}
 								]
 							]
-					
+
 			};*/
 
-			
 
-			
+
+
 
 
 			numberOfQuestionsPairs = questions["questions"].length;
 			console.log("length:" + numberOfQuestionsPairs);
-		
+
 			generateQuestion(questions["questions"][numberOfQuestionsPairsCounter]);
 			numberOfQuestionsPairsCounter++;
 	    	$('.start-wrapper').hide();
 	    	$('.question-wrapper').show();
 			});
-		
+
     });
-	
+
 });
