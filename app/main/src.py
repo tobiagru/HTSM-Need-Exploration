@@ -70,7 +70,7 @@ def build_questions(language='EN', owner=None):
 		return fail_questions
 
 	try:
-		return jsonify(questions)
+		return json.dumps(questions)
 	except:
 		print("failed to convert dict of questions to json")
 		return fail_questions
