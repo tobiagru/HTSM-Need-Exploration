@@ -126,6 +126,17 @@
         'Hello, ' + response.first_name + '!';
     });
   }
+
+  function successfulLoginConfirmation() {
+    //console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('hello-sentence').innerHTML =
+        'Hello, ' + response.first_name + '!';
+    });
+  }
+
+  
 </script>
 
 <!--
@@ -133,9 +144,6 @@
   the JavaScript SDK to present a graphical Login button that triggers
   the FB.login() function when clicked.
 -->
-
-
-
 
 
 </div>
@@ -158,13 +166,20 @@
           </div>
 
           <div class="inner cover start-wrapper">
-
-         
-          <div class="row">
-            <div class="start-title">Do you know what you need?</div>
-          </div>
-          <button type="button" class="btn btn-primary btn-lg starttestbutton">Find out</button>
-
+            <div class="row">
+              <div class="start-title">Do you know what you need?</div>
+            </div>
+            <div class="row facebook-status-loggedout">
+              <div class="">Login with Facebook to find out</div>
+              <div id="status">
+              </div>
+              <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+              </fb:login-button>
+            </div>
+            <div class="row facebook-status-loggedin">
+              <div id="hello-sentence"></div>
+              <button type="button" class="btn btn-primary btn-lg starttestbutton">Find out now</button>
+            </div>
           </div>
 
 
@@ -173,10 +188,7 @@
             <div class="row">
               <div class="col-md-12 question-div" style="color:white; margin-bottom: 30px; font-size: 20px;">Would you rather want a?</div>
               <div>
-              <div id="status">
-              </div>
-              <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-              </fb:login-button>
+            
             </div>
 
           </div>

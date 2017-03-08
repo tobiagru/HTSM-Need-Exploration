@@ -79,11 +79,11 @@ $(document).ready(function(){
 		console.log(notClickedId);
 
 		// get question 1
-		var answer = {"questionId": getId1, "questionText": question1status, "altAnswerId": getId2};
+		var answer = {"questionId": getId1, "answerValue": question1status, "altQuestionId": getId2};
 		result.answers.push({answer});
 
 		// get question 2
-		var answer = {"questionId": getId2, "questionText": question2status, "altAnswerId": getId1};
+		var answer = {"questionId": getId2, "answerValue": question2status, "altQuestionId": getId1};
 		result.answers.push({answer});
 
 		$('.decision-wrapper').remove();
