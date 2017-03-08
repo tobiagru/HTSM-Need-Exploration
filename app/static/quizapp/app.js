@@ -6,7 +6,7 @@ $(document).ready(function(){
     	statusChangeCallback(response);
 	});
 	*/
-	
+
 /* prepare for csrf token*/
 	var csrftoken = $('meta[name=csrf-token]').attr('content');
 
@@ -94,13 +94,24 @@ $(document).ready(function(){
    			generateQuestion(questions["questions"][numberOfQuestionsPairsCounter]);
    			numberOfQuestionsPairsCounter++;
    		} else {
-			//POST Request here
+			
+   			// Add metadata to result object
+
+   			// Add language
+   			var userLanguage = {"key": "lang", "value": "EN"};
+   			var userCountry = {"key": "country", "value": "germany"};
+
+   			var result.metadata = [userLanguage, userCountry]
+			
+   			/* old metadata format
 			result.metadata["lang"]="de";
 			result.metadata["country"]="Switzerland";
+			*/
+
 			console.log( JSON.stringify(result));
 
-			var answers = result;
-			$.post( "http://quiz.needseeker.io/postanswer", function( answers ) {
+			//POST Request here
+			$.post( "http://quiz.needseeker.io/postanswer", function( result ) {
 				console.log("successful post");
 				$('.question-div').remove();
 				$('.decision-wrapper').remove();
