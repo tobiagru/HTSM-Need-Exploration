@@ -52,7 +52,7 @@ def build_questions(language='EN', owner=None):
 						.all()
 	except:
 		print("Failed to load 20 questions from the database")
-		return jsonify(fail_questions)
+		return json.dumps(fail_questions)
 
 	try:
 		questions = {"questions":
@@ -67,13 +67,13 @@ def build_questions(language='EN', owner=None):
 					}
 	except:
 		print("Failed to turn list of 20 questions into 10 tuples of 2 questions")
-		return jsonify(fail_questions)
+		return json.dumps(fail_questions)
 
 	try:
-		return jsonify(questions)
+		return json.dumps(questions)
 	except:
 		print("failed to convert dict of questions to json")
-		return jsonify(fail_questions)
+		return json.dumps(fail_questions)
 
 
 def getusertype():
