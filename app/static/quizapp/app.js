@@ -112,15 +112,35 @@ $(document).ready(function(){
 
 			console.log( JSON.stringify(result));
 
-			//POST Request here
+			//POST Request 
+			// New POST Solution
+			$.ajax({
+			  type: "POST",
+			  contentType: "application/json; charset=utf-8",
+			  url: "http://quiz.needseeker.io/postanswer",
+			  data: JSON.stringify(result),
+			  success: function (data) {
+			    console.log("looks like a successful post");
+				$('.question-div').remove();
+				$('.decision-wrapper').remove();
+				$('.question-wrapper').append('<div class="row"><div class="col-md-12 congrats-title">Congratulation!</div>');
+				$('.question-wrapper').append('<div class="row"><div class="col-md-12 "><img src="static/img/badgeimage2.png"></div>');
+				$('.question-wrapper').append('<div class="row"><div class="col-md-12 share-botton"><img src="static/img/s_fb_button.png"></div>');
+			  },
+			  dataType: "json"
+			});
+			
+
+			/* OLD POST Solution
 			$.post( "http://quiz.needseeker.io/postanswer", function( result ) {
-				console.log("successful post");
+				//console.log("successful post");
 				$('.question-div').remove();
 				$('.decision-wrapper').remove();
 				$('.question-wrapper').append('<div class="row"><div class="col-md-12 congrats-title">Congratulation!</div>');
 				$('.question-wrapper').append('<div class="row"><div class="col-md-12 "><img src="static/img/badgeimage2.png"></div>');
 				$('.question-wrapper').append('<div class="row"><div class="col-md-12 share-botton"><img src="static/img/s_fb_button.png"></div>');
 			});
+			*/
 
 		}
 	});
