@@ -131,56 +131,34 @@ def test_POST_request():
 
     for answer in answers["answers"]:
         #create new answer
-        try:
-            new_answer = Answer(
-                        questionId=answer["answer"]["questionId"],
-                        altQuestionId=answer["answer"]["altQuestionId"],
-                        answerValue=answer["answer"]["answerValue"],
-                        source=owner
-                    )
-            print("created answer")
-        except:
-            print("not able to build answer")
-            continue
+        new_answer = Answer(
+                    questionId=answer["answer"]["questionId"],
+                    altQuestionId=answer["answer"]["altQuestionId"],
+                    answerValue=answer["answer"]["answerValue"],
+                    source=owner
+                )
+        print("created answer")
 
-        try:
-            #save answer to db
-            db.session.add(new_answer)
-            db.session.commit()
-            print("commited answer")
-            
-        except:
-            print("Failed to save answer in db for questionID {0}".format(answer["answer"]["questionId"]))
-            continue
-        
-        try:
-            assert len(answers["metadata"]) >= 1
-        except AssertionError:
-            print("no meta Data")
-            continue
+        #save answer to db
+        db.session.add(new_answer)
+        db.session.commit()
+        print("commited answer")
 
         for meta in answers["metadata"]:
             #create new meta data
-            try:
-                new_metadata = AnswerMeta(
-                        answerId=new_answer.id,
-                        key=meta["key"],
-                        value=meta["value"]
-                    )
-                print("created meta")
-            except:
-                print("not able to build metadata")
-                continue
+            
+            new_metadata = AnswerMeta(
+                    answerId=new_answer.id,
+                    key=meta["key"],
+                    value=meta["value"]
+                )
+            print("created meta")
 
-            try:
-                #save metadata
-                db.add(new_metadata)
-                db.commit()
-                #save metadata
-                print("commited meta")
-            except:
-                print("Failed to save metadata in dbfor questionID {0}".format(answer["questionId"]))
-                continue
+            #save metadata
+            db.add(new_metadata)
+            db.commit()
+            #save metadata
+            print("commited meta")
 
 @manager.option(
     '-n',
