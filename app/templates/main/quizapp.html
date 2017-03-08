@@ -134,7 +134,8 @@
     //console.log('Welcome!  Fetching your information.... ');
     FB.api('/me?fields=first_name', function(response) {
       console.log('Successful login for: ' + response.name);
-      document.getElementById("facebook-status-loggedout").style.visibility = "hidden";   
+      document.getElementById("facebook-status-loggedout").style.visibility = "hidden";
+      document.getElementById("starttestbutton").style.visibility = "visible";      
       document.getElementById('hello-sentence').innerHTML =
         'Hello, ' + response.first_name + '!';
     });
@@ -173,7 +174,7 @@
             <div class="row">
               <div class="start-title">Do you know what you need?</div>
             </div>
-            <div class="row" id="facebook-status-loggedout">
+            <div class="row" id="facebook-status-loggedout" style="margin-bottom: 20px;">
               <div class="">Login with Facebook to find out</div>
               <div id="status">
               </div>
@@ -181,9 +182,9 @@
               </fb:login-button>
               <br/>
             </div>
-            <div class="row facebook-status-loggedin">
+            <div class="row facebook-status-loggedin" style="margin-bottom: 20px;">
               <div id="hello-sentence"></div>
-              <button type="button" class="btn btn-primary btn-lg starttestbutton">Find out now</button>
+              <button type="button" class="btn btn-primary btn-lg starttestbutton" style="visibility: hidden" id="starttestbutton">Find out now</button>
             </div>
           </div>
 
