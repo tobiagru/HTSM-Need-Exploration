@@ -31,7 +31,8 @@ def postanswer():
 	 	src.save_answers(request.get_json())
 	 	return src.getusertype()
 	else:
-		return "error: request was not json"
+		src.save_answers(request.get_data())
+	 	return src.getusertype()
 
 
 #return: ...
