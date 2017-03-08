@@ -1,0 +1,38 @@
+22:52:01 system   | worker.1 started (pid=52276)
+22:52:01 system   | redis.1 started (pid=52277)
+22:52:01 system   | web.1 started (pid=52279)
+[0m[36m22:52:01 redis.1  | [0m52284:C 08 Mar 22:52:01.944 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+[0m[36m22:52:01 redis.1  | [0m52284:M 08 Mar 22:52:01.955 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+[0m[36m22:52:01 redis.1  | [0m                _._                                                  
+[0m[36m22:52:01 redis.1  | [0m           _.-``__ ''-._                                             
+[0m[36m22:52:01 redis.1  | [0m      _.-``    `.  `_.  ''-._           Redis 3.0.6 (00000000/0) 64 bit
+[0m[36m22:52:01 redis.1  | [0m  .-`` .-```.  ```\/    _.,_ ''-._                                   
+[0m[36m22:52:01 redis.1  | [0m (    '      ,       .-`  | `,    )     Running in standalone mode
+[0m[36m22:52:01 redis.1  | [0m |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+[0m[36m22:52:01 redis.1  | [0m |    `-._   `._    /     _.-'    |     PID: 52284
+[0m[36m22:52:01 redis.1  | [0m  `-._    `-._  `-./  _.-'    _.-'                                   
+[0m[36m22:52:01 redis.1  | [0m |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+[0m[36m22:52:01 redis.1  | [0m |    `-._`-._        _.-'_.-'    |           http://redis.io        
+[0m[36m22:52:01 redis.1  | [0m  `-._    `-._`-.__.-'_.-'    _.-'                                   
+[0m[36m22:52:01 redis.1  | [0m |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+[0m[36m22:52:01 redis.1  | [0m |    `-._`-._        _.-'_.-'    |                                  
+[0m[36m22:52:01 redis.1  | [0m  `-._    `-._`-.__.-'_.-'    _.-'                                   
+[0m[36m22:52:01 redis.1  | [0m      `-._    `-.__.-'    _.-'                                       
+[0m[36m22:52:01 redis.1  | [0m          `-._        _.-'                                           
+[0m[36m22:52:01 redis.1  | [0m              `-.__.-'                                               
+[0m[36m22:52:01 redis.1  | [0m
+[0m[36m22:52:01 redis.1  | [0m52284:M 08 Mar 22:52:01.957 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+[0m[36m22:52:01 redis.1  | [0m52284:M 08 Mar 22:52:01.957 # Server started, Redis version 3.0.6
+[0m[36m22:52:01 redis.1  | [0m52284:M 08 Mar 22:52:01.957 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[0m[36m22:52:01 redis.1  | [0m52284:M 08 Mar 22:52:01.957 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+[0m[36m22:52:01 redis.1  | [0m52284:M 08 Mar 22:52:01.958 * DB loaded from disk: 0.000 seconds
+[0m[36m22:52:01 redis.1  | [0m52284:M 08 Mar 22:52:01.958 * The server is now ready to accept connections on port 6379
+[0m[32m22:52:02 worker.1 | [0mImporting environment from .env file
+[0m[32m22:52:02 worker.1 | [0mSecret Key set
+[0m[32m22:52:02 worker.1 | [0mStarten in DEV mode
+[0m[32m22:52:02 worker.1 | [0mmysql+mysqlconnector://need-exploration@localhost/need_exploration
+[0m[32m22:52:02 worker.1 | [0mproduction
+[0m[32m22:52:02 worker.1 | [0mTHIS APP IS IN DEBUG MODE. YOU SHOULD NOT SEE THIS IN PRODUCTION.
+[0m[32m22:52:02 worker.1 | [0mmysql+mysqlconnector://need-exploration@localhost/need_exploration
+[0m[33m22:52:02 web.1    | [0mImporting environment from .env file
+[0m[33m22:52:02 web.1  
