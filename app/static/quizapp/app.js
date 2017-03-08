@@ -15,7 +15,7 @@ $(document).ready(function(){
 	    }
 	})
 
-	/*
+	/*len
 
 		var response = {
 		"answers": [
@@ -102,8 +102,8 @@ $(document).ready(function(){
 				$('.question-div').remove();
 				$('.decision-wrapper').remove();
 				$('.question-wrapper').append('<div class="row"><div class="col-md-12 congrats-title">Congratulation!</div>');
-				$('.question-wrapper').append('<div class="row"><div class="col-md-12 "><img src="./img/badgeimage2.png"></div>');
-				$('.question-wrapper').append('<div class="row"><div class="col-md-12 share-botton"><img src="./img/s_fb_button.png"></div>');
+				$('.question-wrapper').append('<div class="row"><div class="col-md-12 "><img src="static/img/badgeimage2.png"></div>');
+				$('.question-wrapper').append('<div class="row"><div class="col-md-12 share-botton"><img src="static/img/s_fb_button.png"></div>');
 			});
 
 		}
@@ -112,7 +112,7 @@ $(document).ready(function(){
 
 	$(document).on('click', '.starttestbutton', function(){
 
-		$.get( "http://quiz.needseeker.io/getquestion", function( data ) {
+		$.get( "//quiz.needseeker.io/getquestion", function( data ) {
 		 console.log(data);
 		 questions = JSON.parse(data);
 

@@ -7,3 +7,4 @@ from .user import *  # noqa
 from .miscellaneous import *  # noqa
 from .question import *  # noqa
 from .answer import *  # noqa
+from .result import *  # noqa
