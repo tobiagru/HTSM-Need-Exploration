@@ -11,6 +11,8 @@ from rq import Connection, Queue, Worker
 from app import create_app, db
 from app.models import Role, User, fill_the_db, Question, QuestionText, Answer, AnswerMeta
 
+from main.src import build_questions
+
 from sqlalchemy.sql.expression import func
 import json
 
@@ -102,6 +104,10 @@ def test_questions():
 def test_answers():
     print(Answer.query.order_by(Answer.id.desc()).first())
     print(AnswerMeta.query.order_by(AnswerMeta.id.desc()).first())
+
+@manager.command
+def test_POST_request():
+    build_questions(json.dumps({"answers":[{"answer":{"questionId":38,"answerValue":true,"altAsnwerId":34}},{"answer":{"questionId":34,"answerValue":false,"altAsnwerId":38}}],"metadata":[{"key":"lang",:"value":"DE"},{"key":"country","value":"Switzerland"}]}))
 
 
 @manager.option(
