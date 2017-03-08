@@ -45,7 +45,7 @@ $(document).ready(function(){
 
 	var result = {
 					"answers":[],
-					"metadata":{}
+					"metadata":[]
 	};
 
 	function generateQuestion(questionsPair){
@@ -101,7 +101,8 @@ $(document).ready(function(){
    			var userLanguage = {"key": "lang", "value": "EN"};
    			var userCountry = {"key": "country", "value": "germany"};
 
-   			var result.metadata = [userLanguage, userCountry];
+   			var result.metadata = push(userLanguage)
+   			var result.metadata = push(userCountry]);
 			
    			/* old metadata format
 			result.metadata["lang"]="de";
