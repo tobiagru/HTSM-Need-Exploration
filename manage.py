@@ -111,12 +111,12 @@ def test_POST_request():
                                     [
                                         {"answer":
                                             {"questionId":38,
-                                             "answerValue": true,
+                                             "answerValue": True,
                                              "altAsnwerId":34}
                                          },
                                          {"answer":
                                             {"questionId":34,
-                                             "answerValue": false,
+                                             "answerValue": False,
                                              "altAsnwerId":38}
                                          }
                                     ],
