@@ -11,7 +11,7 @@ from rq import Connection, Queue, Worker
 from app import create_app, db
 from app.models import Role, User, fill_the_db, Question, QuestionText, Answer, AnswerMeta
 
-from main.src import build_questions
+from app.main.src import build_questions
 
 from sqlalchemy.sql.expression import func
 import json
