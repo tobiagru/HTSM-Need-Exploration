@@ -10,7 +10,7 @@ from flask import jsonify
 from .. import db
 from ..models import Question, Answer, AnswerMeta, QuestionText
 
-fail_questions = jsonify({"questions":[
+fail_questions = ({"questions":[
 							[{"questionId": "1", "questionText": "1"},
 								{"questionId": "2", "questionText": "2"}],
 							[{"questionId": "3", "questionText": "3"},
@@ -52,7 +52,7 @@ def build_questions(language='EN', owner=None):
 						.all()
 	except:
 		print("Failed to load 20 questions from the database")
-		return fail_questions
+		return jsonify(fail_questions)
 
 	try:
 		questions = {"questions":
@@ -67,13 +67,13 @@ def build_questions(language='EN', owner=None):
 					}
 	except:
 		print("Failed to turn list of 20 questions into 10 tuples of 2 questions")
-		return fail_questions
+		return jsonify(fail_questions)
 
 	try:
 		return jsonify(questions)
 	except:
 		print("failed to convert dict of questions to json")
-		return fail_questions
+		return jsonify(fail_questions)
 
 
 def getusertype():
