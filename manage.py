@@ -92,6 +92,7 @@ def test_questions():
 @manager.command
 def test_answers():
     print(Answer.query.order_by(Answer.id.desc()).first())
+    print(Answer.query.count())
     print(AnswerMeta.query.order_by(AnswerMeta.id.desc()).first())
 
 @manager.command
