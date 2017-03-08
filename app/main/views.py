@@ -35,6 +35,7 @@ def postanswer():
 			src.save_answers(json.loads(request.get_data()))
 		except:
 			print("cannot handle this type of data")
+			print(request.get_data()) 
 	 	return src.getusertype()
 
 
