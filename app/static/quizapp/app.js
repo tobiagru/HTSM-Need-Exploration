@@ -102,7 +102,7 @@ $(document).ready(function(){
    			var userCountry = {"key": "country", "value": "germany"};
 
    			console.log(result.metadata);
-   			result["metadata"].push(userLanguage);
+   			result.metadata.push(userLanguage);
    			result.metadata.push(userCountry]);
 			
    			/* old metadata format
