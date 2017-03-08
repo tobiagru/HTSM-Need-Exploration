@@ -27,7 +27,42 @@ def getquestion():
 #return: usertype
 @main.route('/postanswer', methods=['GET', 'POST'])
 def postanswer():
-	print(request.form.keys()[0])
+	try:
+		print(request.form.keys()[0])
+		print("version form.keys")
+	except:
+		pass
+
+	try:
+		print(request.json(force=True))
+		print("version json")
+	except:
+		pass
+
+	try:
+		print(request.data())
+		print("version data")
+	except:
+		pass
+
+	try:
+		print(request.get_json())
+		print("version get_json")
+	except:
+		pass
+
+	try:
+		print(request.stream.read())
+		print("version stream")
+	except:
+		pass
+
+	try:
+		print(request.get_data())
+		print("version get_data")
+	except:
+		pass
+
 	#src.save_answers(request.get_json(force=True))
 	return src.getusertype()
 
