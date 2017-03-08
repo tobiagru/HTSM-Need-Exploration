@@ -126,8 +126,8 @@ def save_answers(answers, owner=None):
 
 			try:
 				#save metadata
-				db.add(new_metadata)
-				db.commit()
+				db.session.add(new_metadata)
+				db.session.commit()
 				#save metadata
 				print("commited meta")
 			except:
