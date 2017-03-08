@@ -107,6 +107,7 @@ def test_answers():
 
 @manager.command
 def test_POST_request():
+    owner = None
     answers = {"answers":
                     [
                         {"answer":
