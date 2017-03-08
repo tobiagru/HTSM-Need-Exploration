@@ -27,16 +27,19 @@ def getquestion():
 #return: usertype
 @main.route('/postanswer', methods=['POST'])
 def postanswer():
-	if request.is_json:
-	 	src.save_answers(request.get_json(force=True))
-	 	return src.getusertype()
-	else:
-		try:
-			src.save_answers(json.loads(request.get_data()))
-		except:
-			print("cannot handle this type of data")
-			print(request.get_data()) 
-	 	return src.getusertype()
+	src.save_answers(request.get_json(force=True))
+	return src.getusertype()
+
+#	if request.is_json:
+#	 	src.save_answers(request.get_json(force=True))
+#	 	return src.getusertype()
+#	else:
+#		try:
+#			src.save_answers(json.loads(request.get_data()))
+#		except:
+#			print("cannot handle this type of data")
+#			print(request.get_data()) 
+#	 	return src.getusertype()
 
 
 #return: ...
