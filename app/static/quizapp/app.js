@@ -1,9 +1,12 @@
 $(document).ready(function(){
 
+	/*
 	// Check FB Login Status
 	FB.getLoginStatus(function(response) {
     	statusChangeCallback(response);
 	});
+	*/
+
 /* prepare for csrf token*/
 	var csrftoken = $('meta[name=csrf-token]').attr('content');
 
@@ -42,7 +45,7 @@ $(document).ready(function(){
 
 	var result = {
 					"answers":[],
-					"metadata":{}
+					"metadata":[]
 	};
 
 	function generateQuestion(questionsPair){
@@ -91,13 +94,26 @@ $(document).ready(function(){
    			generateQuestion(questions["questions"][numberOfQuestionsPairsCounter]);
    			numberOfQuestionsPairsCounter++;
    		} else {
-			//POST Request here
+			
+   			// Add metadata to result object
+
+   			// Add language
+   			var userLanguage = {"key": "lang", "value": "EN"};
+   			var userCountry = {"key": "country", "value": "germany"};
+
+   			console.log(result.metadata);
+   			result.metadata.push(userLanguage);
+   			result.metadata.push(userCountry);
+			
+   			/* old metadata format
 			result.metadata["lang"]="de";
 			result.metadata["country"]="Switzerland";
+			*/
+
 			console.log( JSON.stringify(result));
 
-			var answers = result;
-			$.post( "http://quiz.needseeker.io/postanswer", function( answers ) {
+			//POST Request here
+			$.post( "http://quiz.needseeker.io/postanswer", function( result ) {
 				console.log("successful post");
 				$('.question-div').remove();
 				$('.decision-wrapper').remove();
