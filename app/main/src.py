@@ -84,10 +84,15 @@ def save_answers(answers, owner=None):
 	for answer in answers["answers"]:
 		#create new answer
 		try:
+			if answer["answer"]["answerValue"] in ["true", "True", "TRUE", "1"]:
+				ansValue = True
+			else:
+				ansValue = False
+
 			new_answer = Answer(
-						questionId=answer["answer"]["questionId"],
-						altQuestionId=answer["answer"]["altQuestionId"],
-						answerValue=answer["answer"]["answerValue"],
+						questionId=int(answer["answer"]["questionId"]),
+                    	altQuestionId=int(answer["answer"]["altQuestionId"]),
+						answerValue=ansValue,
 						source=owner
 					)
 			print("created answer")
