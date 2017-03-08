@@ -67,8 +67,8 @@
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
+      /*document.getElementById('status').innerHTML = 'Please log ' +
+        'into Facebook.'; */
     }
   }
 
@@ -179,6 +179,7 @@
               </div>
               <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
               </fb:login-button>
+              <br/>
             </div>
             <div class="row facebook-status-loggedin">
               <div id="hello-sentence"></div>
