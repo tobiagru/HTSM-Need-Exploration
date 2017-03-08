@@ -27,7 +27,8 @@ def getquestion():
 #return: usertype
 @main.route('/postanswer', methods=['POST'])
 def postanswer():
-	src.save_answers(request.get_json(force=True))
+	print(request.get_json(force=True))
+	#src.save_answers(request.get_json(force=True))
 	return src.getusertype()
 
 #	if request.is_json:
