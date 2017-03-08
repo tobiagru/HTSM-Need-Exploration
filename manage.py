@@ -86,17 +86,6 @@ def test_questions():
 
     questions = {"questions": questions_tmp}
 
-
-    # questions = {"questions": [
-    #                 [
-    #                     {"questionId": question.questionId,
-    #                          "questionText": question.text},
-    #                     {"questionId": question2.questionId,
-    #                          "questionText": question2.text}
-    #                 ] for question, question2 in zip(questionList, questionList2)
-    #             ]
-    #         }
-
     print(json.dumps(questions))
 
 
@@ -112,12 +101,12 @@ def test_POST_request():
                     [
                         {"answer":
                             {"questionId":38,
-                             "answerValue": True,
+                             "answerValue": "True",
                              "altQuestionId":34}
                          },
                          {"answer":
                             {"questionId":34,
-                             "answerValue": False,
+                             "answerValue": "false",
                              "altQuestionId":38}
                          }
                     ],
@@ -132,9 +121,14 @@ def test_POST_request():
 
     for answer in answers["answers"]:
         #create new answer
+        if answer["answer"]["answerValue"] in ["true", "True", "TRUE", "1", 1]:
+                ansValue = True
+            else:
+                ansValue = False
+
         new_answer = Answer(
-                    questionId=answer["answer"]["questionId"],
-                    altQuestionId=answer["answer"]["altQuestionId"],
+                    questionId=int(answer["answer"]["questionId"]),
+                    altQuestionId=int(answer["answer"]["altQuestionId"]),
                     answerValue=answer["answer"]["answerValue"],
                     source=owner
                 )
