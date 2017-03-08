@@ -101,8 +101,8 @@ $(document).ready(function(){
    			var userLanguage = {"key": "lang", "value": "EN"};
    			var userCountry = {"key": "country", "value": "germany"};
 
-   			var result.metadata = push(userLanguage)
-   			var result.metadata = push(userCountry]);
+   			var result["metadata"].push(userLanguage)
+   			var result.metadata.push(userCountry]);
 			
    			/* old metadata format
 			result.metadata["lang"]="de";
