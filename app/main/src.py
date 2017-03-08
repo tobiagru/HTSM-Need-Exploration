@@ -90,6 +90,7 @@ def save_answers(answers, owner=None):
 						answerValue=answer["answer"]["answerValue"],
 						source=owner
 					)
+			print("created answer")
 		except:
 			print("not able to build answer")
 			continue
@@ -98,6 +99,7 @@ def save_answers(answers, owner=None):
 			#save answer to db
 			db.session.add(new_answer)
 			db.session.commit()
+			print("commited answer")
 			
 		except:
 			print("Failed to save answer in db for questionID {0}".format(answer["answer"]["questionId"]))
@@ -117,15 +119,17 @@ def save_answers(answers, owner=None):
 						key=meta["key"],
 						value=meta["value"]
 					)
+				print("created meta")
 			except:
 				print("not able to build metadata")
 				continue
 
 			try:
 				#save metadata
-				db.add(new_metadata)
-				db.commit()
+				db.session.add(new_metadata)
+				db.session.commit()
 				#save metadata
+				print("commited meta")
 			except:
 				print("Failed to save metadata in dbfor questionID {0}".format(answer["questionId"]))
 				continue
