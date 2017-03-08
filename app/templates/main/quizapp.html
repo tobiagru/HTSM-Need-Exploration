@@ -123,7 +123,7 @@
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
+        'Hello, ' + response.first_name + '!';
     });
   }
 </script>
@@ -158,11 +158,8 @@
           </div>
 
           <div class="inner cover start-wrapper">
-          <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-          </fb:login-button>
 
-          <div id="status">
-          </div>
+         
           <div class="row">
             <div class="start-title">Do you know what you need?</div>
           </div>
@@ -175,6 +172,11 @@
           <div class="inner cover question-wrapper">
             <div class="row">
               <div class="col-md-12 question-div" style="color:white; margin-bottom: 30px; font-size: 20px;">Would you rather want a?</div>
+              <div>
+              <div id="status">
+              </div>
+              <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+              </fb:login-button>
             </div>
 
           </div>
