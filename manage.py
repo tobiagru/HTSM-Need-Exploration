@@ -11,8 +11,6 @@ from rq import Connection, Queue, Worker
 from app import create_app, db
 from app.models import Role, User, fill_the_db, Question, QuestionText, Answer, AnswerMeta
 
-from app.main.src import build_questions
-
 from sqlalchemy.sql.expression import func
 import json
 
@@ -105,61 +103,6 @@ def test_answers():
     print(Answer.query.order_by(Answer.id.desc()).first())
     print(AnswerMeta.query.order_by(AnswerMeta.id.desc()).first())
 
-@manager.command
-def test_POST_request():
-    owner = None
-    answers = {"answers":
-                    [
-                        {"answer":
-                            {"questionId":38,
-                             "answerValue": True,
-                             "altQuestionId":34}
-                         },
-                         {"answer":
-                            {"questionId":34,
-                             "answerValue": False,
-                             "altQuestionId":38}
-                         }
-                    ],
-                "metadata":
-                    [
-                        {"key":"lang",
-                         "value":"DE"},
-                        {"key":"country",
-                         "value":"Switzerland"}
-                    ]
-               }
-
-    for answer in answers["answers"]:
-        #create new answer
-        new_answer = Answer(
-                    questionId=answer["answer"]["questionId"],
-                    altQuestionId=answer["answer"]["altQuestionId"],
-                    answerValue=answer["answer"]["answerValue"],
-                    source=owner
-                )
-        print("created answer")
-
-        #save answer to db
-        db.session.add(new_answer)
-        db.session.commit()
-        print("commited answer")
-
-        for meta in answers["metadata"]:
-            #create new meta data
-            
-            new_metadata = AnswerMeta(
-                    answerId=new_answer.id,
-                    key=meta["key"],
-                    value=meta["value"]
-                )
-            print("created meta")
-
-            #save metadata
-            db.session.add(new_metadata)
-            db.session.commit()
-            #save metadata
-            print("commited meta")
 
 @manager.option(
     '-n',
