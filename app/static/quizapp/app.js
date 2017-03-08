@@ -103,7 +103,7 @@ $(document).ready(function(){
 
    			console.log(result.metadata);
    			result.metadata.push(userLanguage);
-   			result.metadata.push(userCountry]);
+   			result.metadata.push(userCountry);
 			
    			/* old metadata format
 			result.metadata["lang"]="de";
