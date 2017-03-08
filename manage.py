@@ -107,7 +107,27 @@ def test_answers():
 
 @manager.command
 def test_POST_request():
-    build_questions(json.dumps({"answers":[{"answer":{"questionId":38,"answerValue":true,"altAsnwerId":34}},{"answer":{"questionId":34,"answerValue":false,"altAsnwerId":38}}],"metadata":[{"key":"lang",:"value":"DE"},{"key":"country","value":"Switzerland"}]}))
+    build_questions(json.dumps({"answers":
+                                    [
+                                        {"answer":
+                                            {"questionId":38,
+                                             "answerValue": true,
+                                             "altAsnwerId":34}
+                                         },
+                                         {"answer":
+                                            {"questionId":34,
+                                             "answerValue": false,
+                                             "altAsnwerId":38}
+                                         }
+                                    ],
+                                "metadata":
+                                    [
+                                        {"key":"lang",
+                                         "value":"DE"},
+                                        {"key":"country",
+                                         "value":"Switzerland"}
+                                    ]
+                               }))
 
 
 @manager.option(
