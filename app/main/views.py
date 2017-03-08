@@ -27,14 +27,7 @@ def getquestion():
 #return: usertype
 @main.route('/postanswer', methods=['GET', 'POST'])
 def postanswer():
-#	try:
-#		print(request.form.keys()[0])
-#		print("version form.keys")
-#	except:
-#		pass
-
-	print(request.get_json(force=True))
-	#src.save_answers(request.get_json(force=True))
+	src.save_answers(request.get_json(force=True))
 	return src.getusertype()
 
 #	if request.is_json:
@@ -47,7 +40,6 @@ def postanswer():
 #			print("cannot handle this type of data")
 #			print(request.get_data()) 
 #	 	return src.getusertype()
-
 
 #return: ...
 @main.route('/analytics')
