@@ -10,7 +10,7 @@ from flask import jsonify
 from .. import db
 from ..models import Question, Answer, AnswerMeta, QuestionText
 
-fail_questions = json.dumps({"questions":[
+fail_questions = jsonify({"questions":[
 							[{"questionId": "1", "questionText": "1"},
 								{"questionId": "2", "questionText": "2"}],
 							[{"questionId": "3", "questionText": "3"},
@@ -70,7 +70,7 @@ def build_questions(language='EN', owner=None):
 		return fail_questions
 
 	try:
-		return json.dumps(questions)
+		return jsonify(questions)
 	except:
 		print("failed to convert dict of questions to json")
 		return fail_questions
