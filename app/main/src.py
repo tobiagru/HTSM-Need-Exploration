@@ -77,7 +77,7 @@ def build_questions(language='EN', owner=None):
 
 
 def getusertype():
-	return random.randint(1, 20)
+	return str(random.randint(1, 20))
 
 
 def save_answers(answers, owner=None):
