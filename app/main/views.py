@@ -41,4 +41,4 @@ def postanswer():
 #return: ...
 @main.route('/analytics')
 def analytics():
-	pass
+	return 200
