@@ -1,9 +1,12 @@
 $(document).ready(function(){
 
 	// Check FB Login Status
+	/*
 	FB.getLoginStatus(function(response) {
     	statusChangeCallback(response);
 	});
+	*/
+	
 /* prepare for csrf token*/
 	var csrftoken = $('meta[name=csrf-token]').attr('content');
 
