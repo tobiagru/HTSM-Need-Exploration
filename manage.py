@@ -107,27 +107,27 @@ def test_answers():
 
 @manager.command
 def test_POST_request():
-    answers = json.dumps({"answers":
-                                    [
-                                        {"answer":
-                                            {"questionId":38,
-                                             "answerValue": True,
-                                             "altAsnwerId":34}
-                                         },
-                                         {"answer":
-                                            {"questionId":34,
-                                             "answerValue": False,
-                                             "altAsnwerId":38}
-                                         }
-                                    ],
-                                "metadata":
-                                    [
-                                        {"key":"lang",
-                                         "value":"DE"},
-                                        {"key":"country",
-                                         "value":"Switzerland"}
-                                    ]
-                               })
+    answers = {"answers":
+                    [
+                        {"answer":
+                            {"questionId":38,
+                             "answerValue": True,
+                             "altAsnwerId":34}
+                         },
+                         {"answer":
+                            {"questionId":34,
+                             "answerValue": False,
+                             "altAsnwerId":38}
+                         }
+                    ],
+                "metadata":
+                    [
+                        {"key":"lang",
+                         "value":"DE"},
+                        {"key":"country",
+                         "value":"Switzerland"}
+                    ]
+               }
 
     for answer in answers["answers"]:
         #create new answer
