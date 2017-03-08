@@ -123,8 +123,8 @@ def test_POST_request():
         #create new answer
         if answer["answer"]["answerValue"] in ["true", "True", "TRUE", "1", 1]:
                 ansValue = True
-            else:
-                ansValue = False
+        else:
+            ansValue = False
 
         new_answer = Answer(
                     questionId=int(answer["answer"]["questionId"]),
