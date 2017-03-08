@@ -8,7 +8,7 @@ from flask import jsonify
 
 #import privat
 from .. import db
-from ..models import Question, Answer, AnswerMeta, QuestionText
+from ..models import Question, Answer, AnswerMeta, QuestionText, Result
 
 fail_questions = ({"questions":[
 							[{"questionId": "1", "questionText": "1"},
@@ -77,7 +77,15 @@ def build_questions(language='EN', owner=None):
 
 
 def getusertype():
-	return str(random.randint(1, 20))
+	#TODO change query language
+	result_tmp = Result.query\
+					.filter(QuestionText.language == "EN")\
+					.order_by(func.rand())\
+					.first()
+	result_dict = {"imageId": result_tmp.imageId,
+					"resultName": result_tmp.item,
+					"resultText": result_tmp.text}
+	return json.dump(result_dict)
 
 
 def save_answers(answers, owner=None):
