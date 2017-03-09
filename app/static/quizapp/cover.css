@@ -177,6 +177,9 @@ body {
   padding: 10px;
   padding-top: 20px;
   padding-bottom: 20px;
+  cursor: pointer;
+  cursor: hand;
+
  }
 
  .congrats-title{
@@ -192,4 +195,3 @@ body {
  .share-botton{
   margin-top: 20px;
  }
-
