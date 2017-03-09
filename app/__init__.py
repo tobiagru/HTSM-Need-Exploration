@@ -41,8 +41,9 @@ def create_app(config_name):
     RQ(app)
 
     # Register Jinja template functions
-    from .utils import register_template_utils
+    from .utils import register_template_utils, process_url_for
     register_template_utils(app)
+    process_url_for(app)
 
     # Set up asset pipeline
     assets_env = Environment(app)
