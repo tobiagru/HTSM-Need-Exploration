@@ -85,7 +85,7 @@ def getusertype():
 	result_dict = {"imageId": result_tmp.image_id,
 					"resultName": result_tmp.item,
 					"resultText": result_tmp.text}
-	return json.dump(result_dict)
+	return json.dumps(result_dict)
 
 
 def save_answers(answers, owner=None):
