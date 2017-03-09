@@ -1,5 +1,5 @@
 from flask import url_for
-
+import os
 
 def register_template_utils(app):
     """Register Jinja 2 helpers (called from __init__.py)."""
@@ -19,8 +19,8 @@ def register_template_utils(app):
 def index_for_role(role):
     return url_for(role.index)
 
+
 def process_url_for(app):
-    
     @app.context_processor
     def override_url_for():
         return dict(url_for=dated_url_for)
