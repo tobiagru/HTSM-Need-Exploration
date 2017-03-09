@@ -128,7 +128,7 @@ $(document).ready(function(){
 				$('.question-wrapper').append('<div class="row"><div class="col-md-12 share-botton"><img src="static/img/s_fb_button.png"></div>');
 			  	
 			  	// change <meta property="og:image">
-			  	var newImageUrl = "static/img/results/" + data.imageId + ".jpg";
+			  	var newImageUrl = "https://quiz.needseeker.io/static/img/results/" + data.imageId + ".jpg";
 			  	console.log(newImageUrl);
 			  	$('meta[property="og:image"]').attr('content', newImageUrl); // assigns meta property
 			  	$('.result-wrapper').show();
