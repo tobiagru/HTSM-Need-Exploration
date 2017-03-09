@@ -14,11 +14,11 @@ def index():
      return render_template('main/quizapp.html')
 
 @main.route('/terms')
-def index():
+def terms():
      return render_template('main/tos.html')
 
 @main.route('/privacy')
-def index():
+def tos():
      return render_template('main/privacy.html')
 
 #returns: questions
