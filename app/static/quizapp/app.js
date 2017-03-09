@@ -167,7 +167,7 @@ var userLocale = {"key": "locale", "value": response.locale};
 			});
 			*/
 
-		}
+		
 	});
 
 
