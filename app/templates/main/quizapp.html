@@ -144,7 +144,7 @@
     //console.log('Welcome!  Fetching your information.... ');
     FB.api('/me?fields=first_name', function(response) {
       console.log('Successful login for: ' + response.name);
-      document.getElementById("facebook").style.visibility = "hidden";
+      //document.getElementById("facebook").style.visibility = "hidden";
       document.getElementById("facebook-status-loggedout").style.visibility = "hidden";
       document.getElementById("starttestbutton").style.visibility = "visible";
       
