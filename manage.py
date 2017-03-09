@@ -9,7 +9,7 @@ from redis import Redis
 from rq import Connection, Queue, Worker
 
 from app import create_app, db
-from app.models import Role, User, fill_the_db, Question, QuestionText, Answer, AnswerMeta
+from app.models import Role, User, fill_the_db, Question, QuestionText, Answer, AnswerMeta, Result
 
 from app.main.src import build_questions
 
@@ -94,6 +94,10 @@ def test_answers():
     print(Answer.query.order_by(Answer.id.desc()).first())
     print(Answer.query.count())
     print(AnswerMeta.query.order_by(AnswerMeta.id.desc()).first())
+
+@manage.command
+def test_results
+    print("number of different results {0}".format(Result.query.count()))
 
 @manager.command
 def test_POST_request():
