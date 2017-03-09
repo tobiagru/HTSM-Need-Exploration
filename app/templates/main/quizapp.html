@@ -165,6 +165,13 @@ document.getElementById('hello-sentence').innerHTML =
 
   }
 
+  function share() {
+  FB.ui({
+    method: 'share',
+    href: 'http://quiz.needseeker.io/',
+  }, function(response){});
+}
+
 
 </script>
 
@@ -222,12 +229,14 @@ document.getElementById('hello-sentence').innerHTML =
 
           <div class="inner cover result-wrapper">
             <div class="row">
-                  <div class="fb-share-button-custom">
+              <button class="fb-share-button-custom" type="button" onclick="share();">Lets share</button>
+                  <!--
                   <div class="fb-share-button"
                     data-href="http://quiz.needseeker.io/"
                     data-layout="button_count">
                   </div>
-                  </div>
+                  -->
+             
             </div>
           </div>
 
