@@ -204,3 +204,9 @@ body {
 .result-wrapper {
   display: none;
 }
+
+.fb-share-button-custom{
+  background: #00ff00 url("http://quiz.needseeker.io/static/img/fb_share.png") no-repeat fixed center; 
+  height: 40px;
+  width: 100px;
+}
