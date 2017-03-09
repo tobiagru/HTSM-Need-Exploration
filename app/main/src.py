@@ -82,7 +82,7 @@ def getusertype():
 					.filter(QuestionText.language == "EN")\
 					.order_by(func.rand())\
 					.first()
-	result_dict = {"imageId": result_tmp.imageId,
+	result_dict = {"imageId": result_tmp.image_id,
 					"resultName": result_tmp.item,
 					"resultText": result_tmp.text}
 	return json.dump(result_dict)
