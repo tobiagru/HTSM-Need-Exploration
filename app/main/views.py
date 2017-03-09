@@ -13,6 +13,14 @@ import src
 def index():
      return render_template('main/quizapp.html')
 
+@main.route('/terms')
+def index():
+     return render_template('main/tos.html')
+
+@main.route('/privacy')
+def index():
+     return render_template('main/privacy.html')
+
 #returns: questions
 @main.route('/getquestion', methods=['GET', 'POST'])
 def getquestion():
@@ -38,7 +46,7 @@ def postanswer():
 #			src.save_answers(json.loads(request.get_data()))
 #		except:
 #			print("cannot handle this type of data")
-#			print(request.get_data()) 
+#			print(request.get_data())
 #	 	return src.getusertype()
 
 #return: ...

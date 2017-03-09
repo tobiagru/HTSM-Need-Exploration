@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" class="gr__getbootstrap_com"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="needseeker">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon/favicon-32x32.png') }}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}" sizes="16x16">
+    <link rel="manifest" href="{{ url_for('static', filename='favicon/manifest.json') }}">
+    <link rel="mask-icon" href="{{ url_for('static', filename='favicon/safari-pinned-tab.svg') }}" color="#000000">
+    <meta name="apple-mobile-web-app-title" content="needseeker">
+    <meta name="application-name" content="needseeker">
+    <meta name="theme-color" content="#000000">
+
+    <title>Our Privacy Policy</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='quizapp/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="{{ url_for('static', filename='quizapp/ie10-viewport-bug-workaround.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='quizapp/cover.css') }}" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="{{ url_for('static', filename='quizapp/ie-emulation-modes-warning.js') }}"></script>
+
+
+    <!-- Import Roboto Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+
+  <body data-gr-c-s-loaded="true">
+
+<script>
+  // This is called with the results from from FB.getLoginStatus().
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      //testAPI();
+      successfulLoginConfirmation();
+    } else if (response.status === 'not_authorized') {
+      // The person is logged into Facebook, but not your app.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    } else {
+      // The person is not logged into Facebook, so we're not sure if
+      // they are logged into this app or not.
+      /*document.getElementById('status').innerHTML = 'Please log ' +
+        'into Facebook.'; */
+    }
+  }
+
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '1831659383816415',
+    cookie     : true,  // enable cookies to allow the server to access
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.8' // use graph api version 2.8
+  });
+
+  // Now that we've initialized the JavaScript SDK, we call
+  // FB.getLoginStatus().  This function gets the state of the
+  // person visiting this page and can return one of three states to
+  // the callback you provide.  They can be:
+  //
+  // 1. Logged into your app ('connected')
+  // 2. Logged into Facebook, but not your app ('not_authorized')
+  // 3. Not logged into Facebook and can't tell if they are logged into
+  //    your app or not.
+  //
+  // These three cases are handled in the callback function.
+
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  /*
+  function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me?fields=first_name', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        'Hello, ' + response.first_name + '!';
+    });
+  }
+  */
+
+  function successfulLoginConfirmation() {
+    //console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me?fields=first_name', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById("facebook-status-loggedout").style.visibility = "hidden";
+      document.getElementById("starttestbutton").style.visibility = "visible";
+      document.getElementById('hello-sentence').innerHTML =
+        'Hello, ' + response.first_name + '!';
+    });
+  }
+
+
+</script>
+
+<!--
+  Below we include the Login Button social plugin. This button uses
+  the JavaScript SDK to present a graphical Login button that triggers
+  the FB.login() function when clicked.
+-->
+
+
+</div>
+
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand"><img src="{{ url_for('static', filename='img/logo_white.png') }}" style="height: 30px"></h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+          <div class="inner cover start-wrapper">
+            <div class="row">
+              <div class="container">
+
+  <div class="col-sm-8 col-sm-offset-2">
+    <div class="page-header">
+      <h1>Data privacy</h1>
+    </div>
+
+
+    <p>We guarantee careful treatment of your personal data. We will treat it with high confidentiality and collect and process it according to this guideline.</p>
+    <p>By using our services you consent that we may treat and collect your data according to this guideline.</p>
+
+
+    <h2>Collection &amp; storage</h2>
+    <p>By using the website the following usage data may be collected and stored by us:</p>
+    <ul>
+      <li>Data, which are needed for your registration (e-mail address and your self-defined password) as well as service-specific adjustments (e.g. your preferences) and data that you provide on a voluntary basis (e.g. your name or your profile picture)</li>
+      <li>Data, which arise via usage of the website but which are not actively disclosed (e.g. your browser, your operating system and your IP-address)</li>
+    </ul>
+    <p>There will be no forwarding of data to third parties with the exception of the Young Entrepreneur Club and the ETH Entrepreneur Club which will use the data solely for statistical investigation.</p>
+    <p>Additionally, you agree that specific contents (job advertisements) may be included to websites of third parties.</p>
+
+
+    <h2>Cookies</h2>
+    <p>During the usage of our website needseeker.io, permanent cookies and session-cookies will be created locally on your computer. Session-cookies are being deleted when closing the browser. Permanent cookies are being created when logging-in and make sure that you will be recognized when visiting our website again.</p>
+
+
+    <h2>Deletion of your account &amp; information on your data</h2>
+    <p>If you would like to delete your account please send us an e-mail to <a href="mailto:info@needseeker.io">info@needseeker.io</a> containing the e-mail address belonging to your account at our website.</p>
+    <p>You are authorized to receive information on your own data storage by us. To do so, again please send us your request to
+        <a href="mailto:info@needseeker.io">info@needseeker.io</a>.</p>
+  
+    <h2>Consent to changes</h2>
+    <p>Our current data privacy is valid under <a href="/privacy">https://www.needseeker.io/privacy</a>.</p>
+    <p>Please check the data privacy regularly. By continuous use of our services you agree to possible changes in our data privacy.</p>
+  </div>
+
+            </div>
+          </div>
+
+
+
+          <div class="inner cover question-wrapper">
+            <div class="row">
+              <div class="col-md-12 question-div" style="color:white; margin-bottom: 30px; font-size: 20px;">Would you rather want a?</div>
+              <div>
+
+            </div>
+
+          </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>Copyright 2017 | needseeker</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{ url_for('static', filename='quizapp/jquery.min.js') }}"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="{{ url_for('static', filename='quizapp/bootstrap.min.js') }}"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{{ url_for('static', filename='quizapp/ie10-viewport-bug-workaround.js') }}"></script>
+     <script src="{{ url_for('static', filename='quizapp/app.js') }}"></script>
+     <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-93348039-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</body></html>
