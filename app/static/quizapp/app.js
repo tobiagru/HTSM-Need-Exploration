@@ -94,7 +94,7 @@ $(document).ready(function(){
    			generateQuestion(questions["questions"][numberOfQuestionsPairsCounter]);
    			numberOfQuestionsPairsCounter++;
    		} else {
-			
+
    			// Add metadata to result object
 
    			// Add language
@@ -104,7 +104,7 @@ $(document).ready(function(){
    			console.log(result.metadata);
    			result.metadata.push(userLanguage);
    			result.metadata.push(userCountry);
-			
+
    			/* old metadata format
 			result.metadata["lang"]="de";
 			result.metadata["country"]="Switzerland";
@@ -112,7 +112,7 @@ $(document).ready(function(){
 
 			console.log( JSON.stringify(result));
 
-			//POST Request 
+			//POST Request
 			// New POST Solution
 			$.ajax({
 			  type: "POST",
@@ -126,16 +126,17 @@ $(document).ready(function(){
 
 				var newImageUrl = "http://quiz.needseeker.io/static/img/results/" + data.imageId + ".jpg";
 
-				$('.question-wrapper').append('<div class="row"><div class="col-md-12 congrats-title">Congratulation!</div>');
+				$('.question-wrapper').append('<div class="row"><div class="col-md-12 congrats-title">' + data.Item + '</div>');
 				$('.question-wrapper').append('<div class="row"><div class="col-md-12 "><img src="'+ newImageUrl +'"></div>');
-			  	
+				$('.question-wrapper').append('<div class="row"><div class="col-md-12 ">' + data.Text + '</div>');
+
 			  	// change <meta property="og:image">
 			  	$('meta[property="og:image"]').attr('content', newImageUrl); // assigns meta property
 			  	$('.result-wrapper').show();
 			  },
 			  dataType: "json"
 			});
-			
+
 
 			/* OLD POST Solution
 			$.post( "http://quiz.needseeker.io/postanswer", function( result ) {
