@@ -95,7 +95,7 @@ def test_answers():
     print(Answer.query.count())
     print(AnswerMeta.query.order_by(AnswerMeta.id.desc()).first())
 
-@manage.command
+@manager.command
 def test_results():
     print("number of different results {0}".format(Result.query.count()))
 
