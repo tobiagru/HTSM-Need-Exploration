@@ -126,6 +126,12 @@ $(document).ready(function(){
 				$('.question-wrapper').append('<div class="row"><div class="col-md-12 congrats-title">Congratulation!</div>');
 				$('.question-wrapper').append('<div class="row"><div class="col-md-12 "><img src="static/img/badgeimage2.png"></div>');
 				$('.question-wrapper').append('<div class="row"><div class="col-md-12 share-botton"><img src="static/img/s_fb_button.png"></div>');
+			  	
+			  	// change <meta property="og:image">
+			  	var newImageUrl = "static/img/results/" + data.imageId + ".jpg";
+			  	console.log(newImageUrl);
+			  	$('meta[name=og\\:image]').attr('content', newImageUrl);
+			  	$('.result-wrapper').show();
 			  },
 			  dataType: "json"
 			});
