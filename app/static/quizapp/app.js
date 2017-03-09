@@ -1,6 +1,9 @@
 $(document).ready(function(){
 
-	
+	//Locker
+
+	SocialLocker.init("#locked");
+
 	/*
 	// Check FB Login Status
 	FB.getLoginStatus(function(response) {
@@ -98,13 +101,23 @@ $(document).ready(function(){
 
    			// Add metadata to result object
 
-   			// Add language
-   			var userLanguage = {"key": "lang", "value": "EN"};
-   			var userCountry = {"key": "country", "value": "germany"};
+				FB.api('/me', 'get', { access_token: token, fields: 'age_range,gender,locale' }, function(response) {
+
+
+var userGender = {"key": "gender", "value": response.gender};
+var userAge = {"key": "age", "value": response.age_range};
+var userLocale = {"key": "locale", "value": response.locale};
+
+				});
+				}
+
+
+
 
    			console.log(result.metadata);
-   			result.metadata.push(userLanguage);
-   			result.metadata.push(userCountry);
+   			result.metadata.push(userLocale);
+   			result.metadata.push(userAge);
+				result.metadata.push(userGender);
 
    			/* old metadata format
 			result.metadata["lang"]="de";
@@ -213,3 +226,45 @@ $(document).ready(function(){
 });
 
 
+//Locker
+
+var SocialLocker = (function () {
+    var lock_div, lock_div_identifier;
+    var constructor = function (div) {
+        lock_div = div;
+        lock_div_identifier = jQuery(div).data('lock-id');
+        if (jQuery.totalStorage(lock_div_identifier) == 1) {
+            jQuery(div).show();
+        } else {
+            jQuery(window).load(function () {
+                SocialLocker.lock();
+                twttr.widgets.load();
+                window.twttr.events.bind('tweet', function (event) {
+                    SocialLocker.unlock();
+                });
+
+                FB.Event.subscribe('edge.create',
+                    function (href, widget) {
+                        SocialLocker.unlock();
+                    }
+                );
+            });
+        }
+    };
+
+    buildLocker = function () {
+        var overlayHTML = "<div class='lock-overlay' style='height:" + jQuery(lock_div).height() + "px;width:" + jQuery(lock_div).width() + "px'><h2>Share this page to see your results!</h2><div align='center'><div class=\"fb-like\" data-href=\"http://quiz.needseeker.io\" data-layout=\"button_count\" data-action=\"like\" data-show-faces=\"false\" data-share=\"false\"></div></div></div>";
+        jQuery(lock_div).append(overlayHTML);
+    }
+
+    buildUnlocker = function () {
+        jQuery.totalStorage(lock_div_identifier, 1);
+        jQuery(lock_div).find('.lock-overlay').slideUp();
+    }
+
+    return {
+        init: constructor,
+        lock: buildLocker,
+        unlock: buildUnlocker
+    }
+}());
