@@ -98,23 +98,23 @@ $(document).ready(function(){
 
    			// Add metadata to result object
 
-		/*		FB.api('/me', 'get', { access_token: token, fields: 'age_range,gender,locale' }, function(response) {
+				FB.api('/me', 'get', { access_token: token, fields: 'age_range,gender,locale' }, function(response) {
 
 
 var userGender = {"key": "gender", "value": response.gender};
 var userAge = {"key": "age", "value": response.age_range};
 var userLocale = {"key": "locale", "value": response.locale};
-
-				});*/
+console.log(result.metadata);
+result.metadata.push(userLocale);
+result.metadata.push(userAge);
+result.metadata.push(userGender);
+				});
 				}
 
 
 
 
-   			console.log(result.metadata);
-   			result.metadata.push(userLocale);
-   			result.metadata.push(userAge);
-				result.metadata.push(userGender);
+
 
    			/* old metadata format
 			result.metadata["lang"]="de";
