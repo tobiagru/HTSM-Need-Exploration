@@ -122,6 +122,11 @@ result.metadata.push(userGender);
 				$('.question-div').remove();
 				$('.decision-wrapper').remove();
 
+
+				$('.question-wrapper').hide();
+
+				$(document).on('click', '.fb-share-button', function(){
+				$('.question-wrapper').show();
 				var newImageUrl = "http://quiz.needseeker.io/static/img/results/" + data.imageId + ".jpg";
 
 				$('.question-wrapper').append('<div class="row"><div class="col-md-12 congrats-title">' + data.resultName + '</div>');
@@ -135,6 +140,7 @@ result.metadata.push(userGender);
 					$('meta[property="og\\:site_name"]').attr('content', "needseeker.io"); // assigns meta property
 
 			  	$('.result-wrapper').show();
+			  }
 			  },
 			  dataType: "json"
 			});
