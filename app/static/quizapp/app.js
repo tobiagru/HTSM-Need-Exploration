@@ -101,14 +101,14 @@ $(document).ready(function(){
 
    			// Add metadata to result object
 
-				FB.api('/me', 'get', { access_token: token, fields: 'age_range,gender,locale' }, function(response) {
+		/*		FB.api('/me', 'get', { access_token: token, fields: 'age_range,gender,locale' }, function(response) {
 
 
 var userGender = {"key": "gender", "value": response.gender};
 var userAge = {"key": "age", "value": response.age_range};
 var userLocale = {"key": "locale", "value": response.locale};
 
-				});
+				});*/
 				}
 
 
