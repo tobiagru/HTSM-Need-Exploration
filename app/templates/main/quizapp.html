@@ -18,12 +18,12 @@
     <meta name="application-name" content="needseeker">
     <meta name="theme-color" content="#000000">
 
-    <!-- -->
-  <meta property="og:url"           content="http://www.http://quiz.needseeker.io/" />
+  <!-- metadata for share button -->
+  <meta property="og:url"           content="http://quiz.needseeker.io/" />
   <meta property="og:type"          content="website" />
   <meta property="og:title"         content="needseeker" />
   <meta property="og:description"   content="Find out what you need" />
-  <meta property="og:image"         content="http://www.your-domain.com/path/image.jpg" />
+  <meta property="og:image"         content="http://quiz.needseeker.com/results/img/1.jpg" />
 
     <title>What do you need?</title>
 
@@ -53,6 +53,9 @@
 
 
   <body data-gr-c-s-loaded="true">
+
+
+
 
 <script>
   // This is called with the results from from FB.getLoginStatus().
@@ -110,9 +113,8 @@
   // These three cases are handled in the callback function.
 
   FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-
+      statusChangeCallback(response);
+    });
   };
 
   // Load the SDK asynchronously
@@ -205,10 +207,10 @@
 
           <div class="inner cover result-wrapper">
             <div class="row">
-                <div class="fb-share-button" 
-                  data-href="http://www.http://quiz.needseeker.io/" 
-                  data-layout="button_count">
-                </div>
+                  <div class="fb-share-button" 
+                    data-href="http://quiz.needseeker.io/" 
+                    data-layout="button_count">
+                  </div>
             </div>
           </div>
 

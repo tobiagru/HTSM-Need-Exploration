@@ -123,14 +123,14 @@ $(document).ready(function(){
 			    console.log("looks like a successful post");
 				$('.question-div').remove();
 				$('.decision-wrapper').remove();
+
+				var newImageUrl = "http://quiz.needseeker.io/static/img/results/" + data.imageId + ".jpg";
+
 				$('.question-wrapper').append('<div class="row"><div class="col-md-12 congrats-title">Congratulation!</div>');
-				$('.question-wrapper').append('<div class="row"><div class="col-md-12 "><img src="static/img/badgeimage2.png"></div>');
-				$('.question-wrapper').append('<div class="row"><div class="col-md-12 share-botton"><img src="static/img/s_fb_button.png"></div>');
+				$('.question-wrapper').append('<div class="row"><div class="col-md-12 "><img src="'+ newImageUrl +'"></div>');
 			  	
 			  	// change <meta property="og:image">
-			  	var newImageUrl = "static/img/results/" + data.imageId + ".jpg";
-			  	console.log(newImageUrl);
-			  	$('meta[name=og\\:image]').attr('content', newImageUrl);
+			  	$('meta[property="og:image"]').attr('content', newImageUrl); // assigns meta property
 			  	$('.result-wrapper').show();
 			  },
 			  dataType: "json"
