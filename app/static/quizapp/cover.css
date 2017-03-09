@@ -167,24 +167,25 @@ body {
  * Custom
  */
 
- .question-wrapper {
+.question-wrapper {
   display: none;
- }
+}
 
- .option-wrapper {
+.option-wrapper {
   background-color: white;
   color: black;
   padding: 10px;
-  padding-top: 20px;
-  padding-bottom: 20px;
   cursor: pointer;
   cursor: hand;
+  font-size: 16px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
 
- }
-
-  .option-wrapper:hover {
-    background-color: #E1E1E1;
-  }
+.option-wrapper:hover {
+    background-color: #27ae60;
+    color: white;
+}
 
  .congrats-title{
   font-size: 24px;
