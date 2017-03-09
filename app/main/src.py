@@ -130,8 +130,8 @@ def save_answers(answers, owner=None):
 			try:
 				new_metadata = AnswerMeta(
 						answerId=new_answer.id,
-						key=meta["key"],
-						value=meta["value"]
+						key=meta["key"].str(),
+						value=meta["value"].str()
 					)
 				print("created meta")
 			except:
