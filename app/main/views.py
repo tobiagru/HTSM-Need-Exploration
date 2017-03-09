@@ -26,7 +26,7 @@ def tos():
 def getquestion():
 	if request.method == 'POST':
 		return src.build_questions(
-			language = request.get_json()['language']
+			language = request.get_json()['locale'][-2:]
 		)
 	if request.method == 'GET':
 		return src.build_questions()
