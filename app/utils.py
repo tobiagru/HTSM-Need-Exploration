@@ -19,7 +19,7 @@ def register_template_utils(app):
 def index_for_role(role):
     return url_for(role.index)
 
-def process_url_for(app)
+def process_url_for(app):
     
     @app.context_processor
     def override_url_for():
