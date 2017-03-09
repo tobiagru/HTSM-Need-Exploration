@@ -94,9 +94,9 @@ def save_answers(answers, owner=None):
 		#create new answer
 		try:
 			if answer["answer"]["answerValue"] in ["true", "True", "TRUE", "1"]:
-				ansValue = True
+				ansValue = 1
 			else:
-				ansValue = False
+				ansValue = 0
 
 			new_answer = Answer(
 						questionId=int(answer["answer"]["questionId"]),
@@ -114,11 +114,11 @@ def save_answers(answers, owner=None):
 			db.session.add(new_answer)
 			db.session.commit()
 			print("commited answer")
-			
+
 		except:
 			print("Failed to save answer in db for questionID {0}".format(answer["answer"]["questionId"]))
 			continue
-		
+
 		try:
 			assert len(answers["metadata"]) >= 1
 		except AssertionError:
