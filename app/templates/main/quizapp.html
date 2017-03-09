@@ -146,7 +146,7 @@ var userLocale;
   function successfulLoginConfirmation() {
     //console.log('Welcome!  Fetching your information.... ');
 
-  FB.api('/me', 'get', { access_token: token, fields: 'age_range,gender,locale,first_name' }, function(response) {
+  FB.api('/me', 'get', { fields: 'age_range,gender,locale,first_name' }, function(response) {
 
 
 userGender = {"key": "gender", "value": response.gender};
