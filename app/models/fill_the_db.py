@@ -1,5 +1,5 @@
 from .. import db 
-from ..models import Question, QuestionText
+from ..models import Question, QuestionText, Result
 
 adjectives = [
 				#movement
@@ -59,7 +59,11 @@ adjectives = [
 			]
 
 user_results = [
-
+				["1","EN","Bananacycle","You need a bananacycle to explore your fruity side!"],
+				["2","EN","Volkswagen Bulli","You need a VW Bulli to roam the world as a free spirit!"],
+				["3","EN","Electric Car","You need this electric car to stop the climate warming."],
+				["4","EN","Flintstones Car","You still live in the stone-ages! That's how you get from A to B!"],
+				["5","EN","Dodge Viper","You need something fast to get away from your past haunting you."]
 				]
 
 def fill_the_db():
@@ -74,7 +78,6 @@ def fill_the_db():
 		print("no element in questionText")
 
 	for adjective in adjectives:
-		#cotry:
 			new_question = Question(owner = "FB")
 			db.session.add(new_question)
 			db.session.commit()
@@ -93,5 +96,13 @@ def fill_the_db():
 									text = adjective[2])
 			db.session.add(new_questionText)
 			db.session.commit()
-		#except:
-		#	print("failed to save questions to Question DB")
+	
+	for user_rslt in user_results:
+		new_result = Result(
+							 image_id = int(user_rslt[0]),
+							 language = user_rslt[1],
+							 item = user_rslt[2],
+							 text = user_rslt[3]
+							)
+		db.session.add(new_result)
+		db.session.commit()
