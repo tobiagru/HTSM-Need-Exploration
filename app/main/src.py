@@ -85,6 +85,7 @@ def getusertype():
 	result_dict = {"imageId": result_tmp.image_id,
 					"resultName": result_tmp.item,
 					"resultText": result_tmp.text}
+	print("the user is a {0}".format(result_tmp.item))
 	return json.dumps(result_dict)
 
 
