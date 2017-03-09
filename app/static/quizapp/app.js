@@ -140,7 +140,7 @@ result.metadata.push(userGender);
 					$('meta[property="og\\:site_name"]').attr('content', "needseeker.io"); // assigns meta property
 
 			  	$('.result-wrapper').show();
-			  }
+			  });
 			  },
 			  dataType: "json"
 			});
