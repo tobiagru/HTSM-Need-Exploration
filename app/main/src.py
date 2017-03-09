@@ -93,7 +93,7 @@ def save_answers(answers, owner=None):
 	for answer in answers["answers"]:
 		#create new answer
 		try:
-			if answer["answer"]["answerValue"] in ["true", "True", "TRUE", "1"]:
+			if answer["answer"]["answerValue"] in [True, "true", "True", "TRUE", "1"]:
 				ansValue = 1
 			else:
 				ansValue = 0
