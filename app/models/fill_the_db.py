@@ -33,7 +33,7 @@ adjectives = [
 				["comfortable interieur", "gemuetliche Innenaustattung", "interieur confortable"],
 				["sporty interieur", "sportliche Innenaustattung", "interieur sportif"],
 				["elegant interieur", "elegante Innenaustattung", "interieur elegant"],
-				["expansive interieur", "teure Innenaustattung", "interieur cher"],
+				["expensive interieur", "teure Innenaustattung", "interieur cher"],
 				["retro interieur", "Retroinnenaustattung", "interieur retro"],
 				["futuristic interieur", "futuristische Innenaustattung", "interieur futuriste"],
 				#exterieur
@@ -41,7 +41,7 @@ adjectives = [
 				["sporty car body", "sportliche Karosserie", "carrosserie sportif"],
 				["elegant car body", "elegante Karosserie", "carrosserie elegant"],
 				["edged car body", "kantige Karosserie", "carosserie anguleux"],
-				["curved car body", "geschwungene Karosserie", "carosserie arque"]
+				["curved car body", "geschwungene Karosserie", "carosserie arque"],
 				["expansive car body", "teure Karosserie", "carrosserie cher"],
 				["retro car body", "Retro-Karosserie", "carrosserie retro"],
 				["futuristic car body", "futuristische Karosserie", "carrosserie futuriste"],
@@ -57,6 +57,10 @@ adjectives = [
 				#other
 				["large storage", "grosser Gepaeckraum", "grandes compartiment a bagages"]
 			]
+
+user_results = [
+
+				]
 
 def fill_the_db():
 	try:
