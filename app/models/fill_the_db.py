@@ -33,6 +33,8 @@ adjectives = [
 				["comfortable interieur", "gemuetliche Innenaustattung", "interieur confortable"],
 				["sporty interieur", "sportliche Innenaustattung", "interieur sportif"],
 				["elegant interieur", "elegante Innenaustattung", "interieur elegant"],
+				["sustainable interieur", "nachhaltige Innenaustattung", "interieur durable"],
+				["colorful interieur", "farbige Innenaustattung", "interieur colore"],
 				["expensive interieur", "teure Innenaustattung", "interieur cher"],
 				["retro interieur", "Retroinnenaustattung", "interieur retro"],
 				["futuristic interieur", "futuristische Innenaustattung", "interieur futuriste"],
@@ -42,6 +44,7 @@ adjectives = [
 				["elegant car body", "elegante Karosserie", "carrosserie elegant"],
 				["edged car body", "kantige Karosserie", "carosserie anguleux"],
 				["curved car body", "geschwungene Karosserie", "carosserie arque"],
+				["sustainable car body", "nachhaltige Karosserie", "carosserie durable"],
 				["expansive car body", "teure Karosserie", "carrosserie cher"],
 				["retro car body", "Retro-Karosserie", "carrosserie retro"],
 				["futuristic car body", "futuristische Karosserie", "carrosserie futuriste"],
@@ -59,11 +62,12 @@ adjectives = [
 			]
 
 user_results = [
-				["1","EN","Bananacycle","You need a bananacycle to explore your fruity side!"],
-				["2","EN","Volkswagen Bulli","You need a VW Bulli to roam the world as a free spirit!"],
-				["3","EN","Electric Car","You need this electric car to stop the climate warming."],
-				["4","EN","Flintstones Car","You still live in the stone-ages! That's how you get from A to B!"],
-				["5","EN","Dodge Viper","You need something fast to get away from your past haunting you."]
+				["1", "EN", "Bananacycle","You need a bananacycle to explore your fruity side!"],
+				["2", "EN", "Volkswagen Bulli","You need a VW Bulli to roam the world as a free spirit!"],
+				["3", "EN", "Bamboo Car","You need this bamboo electric car to stop the climate warming."],
+				["4", "EN", "Flintstones Car","You still live in the stone-ages! That's how you get from A to B!"],
+				["5", "EN", "Hyper Car","You need something fast to get away from your past haunting you."],
+				["6", "En", "Batmobil", "You need a batmobil to accomodate all of this super power"]
 				]
 
 def fill_the_db():
