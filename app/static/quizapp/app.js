@@ -109,11 +109,6 @@ result.metadata.push(userLocale);
 result.metadata.push(userAge);
 result.metadata.push(userGender);
 				});
-				}
-
-
-
-
 
 
    			/* old metadata format
@@ -163,7 +158,7 @@ result.metadata.push(userGender);
 				$('.question-wrapper').append('<div class="row"><div class="col-md-12 share-botton"><img src="static/img/s_fb_button.png"></div>');
 			});
 			*/
-
+}
 
 	});
 
