@@ -59,6 +59,9 @@
 
 
 <script>
+var userGender;
+var userAge;
+var userLocale;
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -142,15 +145,25 @@
 
   function successfulLoginConfirmation() {
     //console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me?fields=first_name', function(response) {
-      console.log('Successful login for: ' + response.name);
-      //document.getElementById("facebook").style.visibility = "hidden";
-      document.getElementById("facebook-status-loggedout").style.visibility = "hidden";
-      document.getElementById("starttestbutton").style.visibility = "visible";
-      
-      document.getElementById('hello-sentence').innerHTML =
-        'Hello, ' + response.first_name + '!';
+
+  FB.api('/me', 'get', { access_token: token, fields: 'age_range,gender,locale,first_name' }, function(response) {
+
+
+userGender = {"key": "gender", "value": response.gender};
+userAge = {"key": "age", "value": response.age_range};
+userLocale = {"key": "locale", "value": response.locale};
+console.log(result.metadata);
+
+console.log('Successful login for: ' + response.name);
+//document.getElementById("facebook").style.visibility = "hidden";
+document.getElementById("facebook-status-loggedout").style.visibility = "hidden";
+document.getElementById("starttestbutton").style.visibility = "visible";
+
+document.getElementById('hello-sentence').innerHTML =
+  'Hello, ' + response.first_name + '!';
     });
+
+
   }
 
 
