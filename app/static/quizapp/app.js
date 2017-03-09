@@ -119,27 +119,29 @@ result.metadata.push(userGender);
 			  data: JSON.stringify(result),
 			  success: function (data) {
 			    console.log("looks like a successful post");
-				$('.question-div').remove();
-				$('.decision-wrapper').remove();
+				$('.question-div').hide();
+				$('.decision-wrapper').hide();
 
 
 				$('.question-wrapper').hide();
+				$('.result-wrapper').show();
 
-				$(document).on('click', '.fb-share-button', function(){
-				$('.question-wrapper').show();
-				var newImageUrl = "http://quiz.needseeker.io/static/img/results/" + data.imageId + ".jpg";
+					$(document).on('click', '.fb-share-button', function(){
+						console.log("fb clicked");
+					$('.question-wrapper').show();
+					var newImageUrl = "http://quiz.needseeker.io/static/img/results/" + data.imageId + ".jpg";
 
-				$('.question-wrapper').append('<div class="row"><div class="col-md-12 congrats-title">' + data.resultName + '</div>');
-				$('.question-wrapper').append('<div class="row"><div class="col-md-12 "><img src="'+ newImageUrl +'"></div>');
-				$('.question-wrapper').append('<div class="row"><div class="col-md-12 ">' + data.resultText + '</div>');
+					$('.question-wrapper').append('<div class="row"><div class="col-md-12 congrats-title">' + data.resultName + '</div>');
+					$('.question-wrapper').append('<div class="row"><div class="col-md-12 "><img src="'+ newImageUrl +'"></div>');
+					$('.question-wrapper').append('<div class="row"><div class="col-md-12 ">' + data.resultText + '</div>');
 
-			  	// change <meta property="og:image">
-			  	$('meta[property="og\\:image"]').attr('content', newImageUrl); // assigns meta property
-					$('meta[property="og\\:title"]').attr('content', data.resultName); // assigns meta property
-					$('meta[property="og\\:description"]').attr('content', data.resultText); // assigns meta property
-					$('meta[property="og\\:site_name"]').attr('content', "needseeker.io"); // assigns meta property
+				  	// change <meta property="og:image">
+				  	$('meta[property="og\\:image"]').attr('content', newImageUrl); // assigns meta property
+						$('meta[property="og\\:title"]').attr('content', data.resultName); // assigns meta property
+						$('meta[property="og\\:description"]').attr('content', data.resultText); // assigns meta property
+						$('meta[property="og\\:site_name"]').attr('content', "needseeker.io"); // assigns meta property
 
-			  	$('.result-wrapper').show();
+				  	$('.result-wrapper').show();
 			  });
 			  },
 			  dataType: "json"
