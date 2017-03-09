@@ -141,7 +141,7 @@ result.metadata.push(userGender);
 						$('meta[property="og\\:description"]').attr('content', data.resultText); // assigns meta property
 						$('meta[property="og\\:site_name"]').attr('content', "needseeker.io"); // assigns meta property
 
-				  	$('.result-wrapper').show();
+				
 			  });
 			  },
 			  dataType: "json"
