@@ -126,12 +126,16 @@ $(document).ready(function(){
 
 				var newImageUrl = "http://quiz.needseeker.io/static/img/results/" + data.imageId + ".jpg";
 
-				$('.question-wrapper').append('<div class="row"><div class="col-md-12 congrats-title">' + data.Item + '</div>');
+				$('.question-wrapper').append('<div class="row"><div class="col-md-12 congrats-title">' + data.resultName + '</div>');
 				$('.question-wrapper').append('<div class="row"><div class="col-md-12 "><img src="'+ newImageUrl +'"></div>');
-				$('.question-wrapper').append('<div class="row"><div class="col-md-12 ">' + data.Text + '</div>');
+				$('.question-wrapper').append('<div class="row"><div class="col-md-12 ">' + data.resultText + '</div>');
 
 			  	// change <meta property="og:image">
 			  	$('meta[property="og:image"]').attr('content', newImageUrl); // assigns meta property
+					$('meta[property="og:title"]').attr('content', data.resultName); // assigns meta property
+					$('meta[property="og:description"]').attr('content', data.resultText); // assigns meta property
+					$('meta[property="og:site_name"]').attr('content', "needseeker.io"); // assigns meta property
+
 			  	$('.result-wrapper').show();
 			  },
 			  dataType: "json"
