@@ -130,7 +130,7 @@ $(document).ready(function(){
 			  	// change <meta property="og:image">
 			  	var newImageUrl = "static/img/results/" + data.imageId + ".jpg";
 			  	console.log(newImageUrl);
-			  	('meta[property="og:image"]').attr('content', newImageUrl); // assigns meta property
+			  	$('meta[property="og:image"]').attr('content', newImageUrl); // assigns meta property
 			  	$('.result-wrapper').show();
 			  },
 			  dataType: "json"
