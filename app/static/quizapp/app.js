@@ -127,7 +127,7 @@ result.metadata.push(userGender);
 				$('.result-wrapper').show();
 
 					$(document).on('click', '.fb-share-button-custom', function(){
-						('.result-wrapper').hide();
+						$('.result-wrapper').hide();
 					$('.question-wrapper').show();
 					var newImageUrl = "http://quiz.needseeker.io/static/img/results/" + data.imageId + ".jpg";
 
