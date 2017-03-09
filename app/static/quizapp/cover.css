@@ -206,7 +206,8 @@ body {
 }
 
 .fb-share-button-custom{
-  background: #00ff00 url("http://quiz.needseeker.io/static/img/fb_share.png") no-repeat fixed center; 
+  background-image: url("http://quiz.needseeker.io/static/img/fb_share.png");
   height: 40px;
   width: 100px;
+  border: 0;
 }
