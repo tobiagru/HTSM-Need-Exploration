@@ -160,6 +160,23 @@ def test_POST_request():
             #save metadata
             print("commited meta")
 
+@manager.command
+def analytics():
+    print(Answer.query( Answer.questionId,
+                        QuestionText.text,
+                        func.count(Answer.questionId).label("numAns"),
+                        func.count(case([((Answer.answerValue == True),Answer.questionId)],else_=literal_column("NULL"))).label("trueAns"),
+                        func.count(case([((AnswerMeta.value = "male"),Answer.questionId)],else_=literal_column("NULL"))).label("numMaleAns"),
+                        func.count(case([((Answer.answerValue == True and AnswerMeta.value = "male"),Answer.questionId)],else_=literal_column("NULL"))).label("trueMaleAns"),
+                        func.count(case([((AnswerMeta.value = "female"),Answer.questionId)],else_=literal_column("NULL"))).label("numFemaleAns"),
+                        func.count(case([((Answer.answerValue == True and AnswerMeta.value = "female"),Answer.questionId)],else_=literal_column("NULL"))).label("trueFemaleAns"))\
+                    .group_by(Answer.questionId)\
+                    .join(AnswerMeta)\
+                    .join(Question)\
+                    .join(QuestionText)\
+                    .filter_by(QuestionText.language == "EN")\
+                    .all())
+
 @manager.option(
     '-n',
     '--number-users',
