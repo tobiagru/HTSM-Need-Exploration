@@ -174,8 +174,7 @@ def analytics():
                     .join(AnswerMeta)\
                     .join(Question)\
                     .join(QuestionText)\
-                    .filter_by(QuestionText.language == "EN")\
-                    .all())
+                    .filter_by(QuestionText.language == "EN"))
 
 @manager.option(
     '-n',
