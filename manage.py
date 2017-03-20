@@ -13,7 +13,7 @@ from app.models import Role, User, fill_the_db, Question, QuestionText, Answer, 
 
 from app.main.src import build_questions
 
-from sqlalchemy.sql.expression import func, case
+from sqlalchemy.sql.expression import func, case, literal_column
 import json
 
 if os.path.exists('config.env'):
