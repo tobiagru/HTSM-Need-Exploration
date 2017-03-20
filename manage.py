@@ -165,16 +165,17 @@ def analytics():
     print(Answer.query( Answer.questionId,
                         QuestionText.text,
                         func.count(Answer.questionId).label("numAns"),
-                        func.count(case([((Answer.answerValue == True),Answer.questionId)],else_=literal_column("NULL"))).label("trueAns"),
-                        func.count(case([((AnswerMeta.value == "male"),Answer.questionId)],else_=literal_column("NULL"))).label("numMaleAns"),
-                        func.count(case([((Answer.answerValue == True) & (AnswerMeta.value == "male"),Answer.questionId)],else_=literal_column("NULL"))).label("trueMaleAns"),
-                        func.count(case([((AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL"))).label("numFemaleAns"),
-                        func.count(case([((Answer.answerValue == True) & (AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL"))).label("trueFemaleAns"))\
+                        func.count(case([((Answer.answerValue == True),Answer.questionId)],else_=literal_column("NULL"))).label("trueAns"))\
+                        #func.count(case([((Answer.answerValue == True),Answer.questionId)],else_=literal_column("NULL"))).label("trueAns"),
+                        #func.count(case([((AnswerMeta.value == "male"),Answer.questionId)],else_=literal_column("NULL"))).label("numMaleAns"),
+                        #func.count(case([((Answer.answerValue == True) & (AnswerMeta.value == "male"),Answer.questionId)],else_=literal_column("NULL"))).label("trueMaleAns"),
+                        #func.count(case([((AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL"))).label("numFemaleAns"),
+                        #func.count(case([((Answer.answerValue == True) & (AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL"))).label("trueFemaleAns"))\
                     .group_by(Answer.questionId)\
-                    .join(AnswerMeta)\
-                    .join(Question)\
-                    .join(QuestionText)\
-                    .filter_by(QuestionText.language == "EN"))
+                    #.join(AnswerMeta)\
+                    #.join(Question)\
+                    #.join(QuestionText)\
+                    #.filter_by(QuestionText.language == "EN"))
 
 @manager.option(
     '-n',
