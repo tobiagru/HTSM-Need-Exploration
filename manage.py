@@ -171,7 +171,8 @@ def analytics():
                         #func.count(case([((Answer.answerValue == True) & (AnswerMeta.value == "male"),Answer.questionId)],else_=literal_column("NULL"))).label("trueMaleAns"),
                         #func.count(case([((AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL"))).label("numFemaleAns"),
                         #func.count(case([((Answer.answerValue == True) & (AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL"))).label("trueFemaleAns"))\
-                    .group_by(Answer.questionId)\
+                    .group_by(Answer.questionId))
+                    #.group_by(Answer.questionId)\
                     #.join(AnswerMeta)\
                     #.join(Question)\
                     #.join(QuestionText)\
