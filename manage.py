@@ -163,7 +163,7 @@ def test_POST_request():
 @manager.command
 def analytics():
     print(Answer.query( Answer.questionId,
-                        QuestionText.text,
+                        #QuestionText.text,
                         func.count(Answer.questionId).label("numAns"),
                         func.count(case([((Answer.answerValue == True),Answer.questionId)],else_=literal_column("NULL"))).label("trueAns"))\
                         #func.count(case([((Answer.answerValue == True),Answer.questionId)],else_=literal_column("NULL"))).label("trueAns"),
