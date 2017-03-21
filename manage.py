@@ -162,7 +162,7 @@ def test_POST_request():
 
 @manager.command
 def analytics():
-    print(db.model(Answer).query(Answer.questionId,
+    analytics_data = Answer.query(Answer.questionId,
                         #QuestionText.text,
                         func.count(Answer.questionId).label("numAns"),
                         func.count(case([((Answer.answerValue == True),Answer.questionId)],else_=literal_column("NULL"))).label("trueAns"))\
@@ -171,12 +171,13 @@ def analytics():
                         #func.count(case([((Answer.answerValue == True) & (AnswerMeta.value == "male"),Answer.questionId)],else_=literal_column("NULL"))).label("trueMaleAns"),
                         #func.count(case([((AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL"))).label("numFemaleAns"),
                         #func.count(case([((Answer.answerValue == True) & (AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL"))).label("trueFemaleAns"))\
-                    .group_by(Answer.questionId))
+                    .group_by(Answer.questionId)
                     #.group_by(Answer.questionId)\
                     #.join(AnswerMeta)\
                     #.join(Question)\
                     #.join(QuestionText)\
                     #.filter_by(QuestionText.language == "EN"))
+    print(json.dumps(analytics_data))
 
 @manager.option(
     '-n',
