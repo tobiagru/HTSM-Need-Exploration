@@ -162,7 +162,7 @@ def test_POST_request():
 
 @manager.command
 def analytics():
-    analytics_data = Answer.query(Answer.questionId,func.count(Answer.questionId).label("numAns"),func.count(case([((Answer.answerValue == True),Answer.questionId)],else_=literal_column("NULL"))).label("trueAns"))\
+    analytics_data = Answer.query(Answer.questionId,func.count(Answer.questionId),func.count(case([((Answer.answerValue == True),Answer.questionId)],else_=literal_column("NULL"))).label("trueAns"))\
                      .group_by(Answer.questionId)
 
                         #QuestionText.text,
