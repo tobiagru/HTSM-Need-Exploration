@@ -162,16 +162,16 @@ def test_POST_request():
 
 @manager.command
 def analytics():
-    analytics_data = Answer.query(Answer.questionId,
+    analytics_data = Answer.query(Answer.questionId,func.count(Answer.questionId).label("numAns"),func.count(case([((Answer.answerValue == True),Answer.questionId)],else_=literal_column("NULL"))).label("trueAns"))\
+                     .group_by(Answer.questionId)
+
                         #QuestionText.text,
-                        func.count(Answer.questionId).label("numAns"),
-                        func.count(case([((Answer.answerValue == True),Answer.questionId)],else_=literal_column("NULL"))).label("trueAns"))\
+                        #
                         #func.count(case([((Answer.answerValue == True),Answer.questionId)],else_=literal_column("NULL"))).label("trueAns"),
                         #func.count(case([((AnswerMeta.value == "male"),Answer.questionId)],else_=literal_column("NULL"))).label("numMaleAns"),
                         #func.count(case([((Answer.answerValue == True) & (AnswerMeta.value == "male"),Answer.questionId)],else_=literal_column("NULL"))).label("trueMaleAns"),
                         #func.count(case([((AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL"))).label("numFemaleAns"),
                         #func.count(case([((Answer.answerValue == True) & (AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL"))).label("trueFemaleAns"))\
-                    .group_by(Answer.questionId)
                     #.group_by(Answer.questionId)\
                     #.join(AnswerMeta)\
                     #.join(Question)\
