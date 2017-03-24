@@ -172,43 +172,31 @@ def analytics():
     numFemaleAns = func.count(case([((AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL")))
     trueFemaleAns = func.count(case([((Answer.answerValue == True) & (AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL")))
 
-    percAns = cast(trueAns / numAns, Float(asdecimal=False))
-    percMaleAns = cast(trueMaleAns / numMaleAns, Float(asdecimal=False))
-    percFemaleAns = cast(trueFemaleAns / numFemaleAns, Float(asdecimal=False))
+    #percAns = cast(trueAns / numAns, Float(asdecimal=False))
+    #percMaleAns = cast(trueMaleAns / numMaleAns, Float(asdecimal=False))
+    #percFemaleAns = cast(trueFemaleAns / numFemaleAns, Float(asdecimal=False))          
 
     analytics_data = db.session.query(Answer.questionId.label("questionID"),
                                       QuestionText.text.label("questionText"),
-                                      percAns,
-                                      percMaleAns,
-                                      percFemaleAns
+                                      numAns.label("numAns"),
+                                      trueAns.label("trueAns"),
+                                      numMaleAns.label("numMaleAns"),
+                                      trueMaleAns.label("trueMaleAns"),
+                                      numFemaleAns.label("numFemaleAns"),
+                                      trueFemaleAns.label("trueFemaleAns")
                                       )\
                      .join(QuestionText, Answer.questionId == QuestionText.id)\
                      .join(AnswerMeta, Answer.id == AnswerMeta.answerId)\
                      .filter(QuestionText.language == "EN")\
                      .group_by(Answer.questionId)\
-                     .order_by(percAns.desc())\
-                     .all()             
+                     .order_by()
+                     .all()
 
-    # analytics_data = db.session.query(Answer.questionId.label("questionID"),
-    #                                   QuestionText.text.label("questionText"),
-    #                                   numAns.label("numAns"),
-    #                                   trueAns.label("trueAns"),
-    #                                   numMaleAns.label("numMaleAns"),
-    #                                   trueMaleAns.label("trueMaleAns"),
-    #                                   numFemaleAns.label("numFemaleAns"),
-    #                                   trueFemaleAns.label("trueFemaleAns")
-    #                                   )\
-    #                  .join(QuestionText, Answer.questionId == QuestionText.id)\
-    #                  .join(AnswerMeta, Answer.id == AnswerMeta.answerId)\
-    #                  .filter(QuestionText.language == "EN")\
-    #                  .group_by(Answer.questionId)\
-    #                  .order_by()
-    #                  .all()
+    analytics_df = pd.DataFrame(analytics_data)
+    analytics_df = analytics_data.keys()
 
-    #analytics_df = pd.DataFrame(analytics_data)
-    #print(analytics_df)
+    print(analytics_df)
 
-    print(analytics_data)
 
 @manager.option(
     '-n',
