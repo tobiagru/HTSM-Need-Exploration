@@ -13,6 +13,7 @@ from app.models import Role, User, fill_the_db, Question, QuestionText, Answer, 
 
 from app.main.src import build_questions
 
+from sqlalchemy import Float
 from sqlalchemy.sql.expression import func, case, literal_column
 import json
 
@@ -169,9 +170,9 @@ def analytics():
     numFemaleAns = func.count(case([((AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL")))
     trueFemaleAns = func.count(case([((Answer.answerValue == True) & (AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL")))
 
-    percAns = trueAns / numAns
-    percMaleAns = trueMaleAns / numMaleAns
-    percFemaleAns = trueFemaleAns / numFemaleAns
+    percAns = cast(trueAns / numAns, Float)
+    percMaleAns = cast(trueMaleAns / numMaleAns, Float)
+    percFemaleAns = cast(trueFemaleAns / numFemaleAns, FLoat)
 
     analytics_data = db.session.query(Answer.questionId.label("questionID"),
                                       QuestionText.text.label("questionText"),
