@@ -176,7 +176,7 @@ def analytics():
     # an                .filter_by(QuestionText.language == "EN")
 
     analytics_data = db.session.query(Answer.questionId)\
-                     .group_by(Answer.questionId)\
+                     .group_by(Answer.questionId).all()
                      
     print(analytics_data)
 
