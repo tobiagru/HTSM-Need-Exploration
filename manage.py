@@ -201,7 +201,7 @@ def analytics():
     #                  .order_by()
     #                  .all()
                      
-    print(json.dumps(analytics_data))
+    print(analytics_data)
 
 @manager.option(
     '-n',
