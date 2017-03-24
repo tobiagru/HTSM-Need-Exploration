@@ -194,8 +194,13 @@ def analytics():
     analytics_df = pd.DataFrame(analytics_data,
                                 columns = ["questionId", "questionText","numAns","trueAns","numMaleAns","trueMaleAns","numFemaleAns","trueFemaleAns"])
 
+    analytics_df["percAns"] = analytics_df["trueAns"] / analytics_df["numAns"]
+    analytics_df["percMaleAns"] = analytics_df["trueMaleAns"] / analytics_df["numFemaleAns"]
+    analytics_df["percFemaleAns"] = analytics_df["trueFemaleAns"] / analytics_df["numFemaleAns"]
 
-    print(analytics_df)
+
+    print(analytics_df.describe())
+    print(analytics_df["questionId","QuestionText","percAns","percMaleAns","percFemaleAns"].sort("percAns",ascending=False))
 
 
 @manager.option(
