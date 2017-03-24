@@ -183,8 +183,8 @@ def analytics():
                                       trueMaleAns.label("trueMaleAns"),
                                       numFemaleAns.label("numFemaleAns"),
                                       trueFemaleAns.label("trueFemaleAns"))\
-                     .join(AnswerMeta)\
                      .join(QuestionText)\
+                     .join(AnswerMeta)\
                      .filter_by(QuestionText.language == "EN")\
                      .group_by(Answer.questionId)\
                      .first()
