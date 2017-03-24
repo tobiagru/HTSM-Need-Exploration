@@ -173,7 +173,7 @@ def analytics():
     #                 
     #                 
     #                 
-    # an                .filter_by(QuestionText.language == "EN")
+    # an                
 
     analytics_data = db.session.query(Answer.questionId.label("questionID"),
                                       QuestionText.text.label("questionText"),
@@ -183,10 +183,11 @@ def analytics():
                                       trueMaleAns.label("trueMaleAns"),
                                       numFemaleAns.label("numFemaleAns"),
                                       trueFemaleAns.label("trueFemaleAns"))\
-                     .group_by(Answer.questionId)\
                      .join(AnswerMeta.answerId)\
                      .join(Question.id)\
                      .join(QuestionText.questionId)\
+                     .filter_by(QuestionText.language == "EN")
+                     .group_by(Answer.questionId)\
                      .first()
                      
     print(json.dumps(analytics_data))
