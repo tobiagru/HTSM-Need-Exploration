@@ -169,8 +169,9 @@ def analytics():
     numFemaleAns = func.count(case([((AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL")))
     trueFemaleAns = func.count(case([((Answer.answerValue == True) & (AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL")))
 
+    #(Answer.questionId, QuestionText.text, numAns, trueAns)
 
-    analytics_data = Answer.query(Answer.questionId, QuestionText.text, numAns, trueAns)\
+    analytics_data = Answer.query\
                      .group_by(Answer.questionId)\
                      .join(AnswerMeta)\
                      .join(Question)\
