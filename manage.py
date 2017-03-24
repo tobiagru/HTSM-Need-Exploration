@@ -172,7 +172,7 @@ def analytics():
 
     percAns = cast(trueAns / numAns, Float)
     percMaleAns = cast(trueMaleAns / numMaleAns, Float)
-    percFemaleAns = cast(trueFemaleAns / numFemaleAns, FLoat)
+    percFemaleAns = cast(trueFemaleAns / numFemaleAns, Float)
 
     analytics_data = db.session.query(Answer.questionId.label("questionID"),
                                       QuestionText.text.label("questionText"),
