@@ -184,9 +184,9 @@ def analytics():
                                       trueFemaleAns.label("trueFemaleAns"))\
                      .group_by(Answer.questionId)\
                      .join(AnswerMeta)\
-                     .all()
+                     .first()
                      
-    print(analytics_data)
+    print(json.dumps(analytics_data))
 
 @manager.option(
     '-n',
