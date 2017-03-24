@@ -162,21 +162,20 @@ def test_POST_request():
 
 @manager.command
 def analytics():
-    analytics_data = Answer.query(Answer.questionId,func.count(Answer.questionId),func.count(case([((Answer.answerValue == True),Answer.questionId)],else_=literal_column("NULL"))).label("trueAns"))\
-                     .group_by(Answer.questionId)
+    numAns = func.count(Answer.questionId)
+    trueAns = func.count(case([((Answer.answerValue == True),Answer.questionId)],else_=literal_column("NULL")))
+    numMaleAns = func.count(case([((AnswerMeta.value == "male"),Answer.questionId)],else_=literal_column("NULL")))
+    trueMaleAns = func.count(case([((Answer.answerValue == True) & (AnswerMeta.value == "male"),Answer.questionId)],else_=literal_column("NULL")))
+    numFemaleAns = func.count(case([((AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL")))
+    trueFemaleAns = func.count(case([((Answer.answerValue == True) & (AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL")))
 
-                        #QuestionText.text,
-                        #
-                        #func.count(case([((Answer.answerValue == True),Answer.questionId)],else_=literal_column("NULL"))).label("trueAns"),
-                        #func.count(case([((AnswerMeta.value == "male"),Answer.questionId)],else_=literal_column("NULL"))).label("numMaleAns"),
-                        #func.count(case([((Answer.answerValue == True) & (AnswerMeta.value == "male"),Answer.questionId)],else_=literal_column("NULL"))).label("trueMaleAns"),
-                        #func.count(case([((AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL"))).label("numFemaleAns"),
-                        #func.count(case([((Answer.answerValue == True) & (AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL"))).label("trueFemaleAns"))\
-                    #.group_by(Answer.questionId)\
-                    #.join(AnswerMeta)\
-                    #.join(Question)\
-                    #.join(QuestionText)\
-                    #.filter_by(QuestionText.language == "EN"))
+
+    analytics_data = Answer.query(Answer.questionId, QuestionText.text, numAns, trueAns)\
+                     .group_by(Answer.questionId)\
+                     .join(AnswerMeta)\
+                     .join(Question)\
+                     .join(QuestionText)\
+                     .filter_by(QuestionText.language == "EN")
     print(json.dumps(analytics_data))
 
 @manager.option(
