@@ -183,7 +183,7 @@ def analytics():
                                       trueMaleAns.label("trueMaleAns"),
                                       numFemaleAns.label("numFemaleAns"),
                                       trueFemaleAns.label("trueFemaleAns"))\
-                     .join(Answer.questionId)
+                     .join(Answer.questionId)\
                      .join(Question.id)\
                      .join(QuestionText.questionId)\
                      .join(Answer.id)\
