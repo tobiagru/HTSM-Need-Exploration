@@ -17,6 +17,8 @@ from sqlalchemy import Float
 from sqlalchemy.sql.expression import func, case, literal_column, cast
 import json
 
+import pandas as pd
+
 if os.path.exists('config.env'):
     print('Importing environment from .env file')
     for line in open('config.env'):
@@ -202,6 +204,8 @@ def analytics():
     #                  .group_by(Answer.questionId)\
     #                  .order_by()
     #                  .all()
+
+    analytics_df = pd.DataFrame(analytics_data)
                      
     print(analytics_data)
 
