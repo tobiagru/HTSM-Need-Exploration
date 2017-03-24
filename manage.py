@@ -178,7 +178,7 @@ def analytics():
     analytics_data = db.session.query(Answer.questionId)\
                      .group_by(Answer.questionId)\
                      
-    print(json.dumps(analytics_data))
+    print(analytics_data)
 
 @manager.option(
     '-n',
