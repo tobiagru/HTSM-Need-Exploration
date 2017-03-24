@@ -180,10 +180,10 @@ def analytics():
                                       QuestionText.text.label("questionText"),
                                       numAns.label("numAns"),
                                       trueAns.label("trueAns"),
-                                      #numMaleAns.label("numMaleAns"),
-                                      #trueMaleAns.label("trueMaleAns"),
-                                      #numFemaleAns.label("numFemaleAns"),
-                                      #trueFemaleAns.label("trueFemaleAns")
+                                      numMaleAns.label("numMaleAns"),
+                                      trueMaleAns.label("trueMaleAns"),
+                                      numFemaleAns.label("numFemaleAns"),
+                                      trueFemaleAns.label("trueFemaleAns")
                                       )\
                      .join(QuestionText, Answer.questionId == QuestionText.id)\
                      .join(AnswerMeta, Answer.id == AnswerMeta.answerId)\
