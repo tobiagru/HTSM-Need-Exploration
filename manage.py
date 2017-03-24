@@ -169,27 +169,38 @@ def analytics():
     numFemaleAns = func.count(case([((AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL")))
     trueFemaleAns = func.count(case([((Answer.answerValue == True) & (AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL")))
 
-    #(Answer.questionId, QuestionText.text, numAns, trueAns)
-    #                 
-    #                 .join(Answer.id)\
-    #                 
-    #                 
-    # an                
+    percAns = trueAns / numAns
+    percMaleAns = trueMaleAns / numMaleAns
+    percFemaleAns = trueFemaleAns / numFemaleAns
 
     analytics_data = db.session.query(Answer.questionId.label("questionID"),
                                       QuestionText.text.label("questionText"),
-                                      numAns.label("numAns"),
-                                      trueAns.label("trueAns"),
-                                      numMaleAns.label("numMaleAns"),
-                                      trueMaleAns.label("trueMaleAns"),
-                                      numFemaleAns.label("numFemaleAns"),
-                                      trueFemaleAns.label("trueFemaleAns")
+                                      percAns,
+                                      percMaleAns,
+                                      percFemaleAns
                                       )\
                      .join(QuestionText, Answer.questionId == QuestionText.id)\
                      .join(AnswerMeta, Answer.id == AnswerMeta.answerId)\
                      .filter(QuestionText.language == "EN")\
                      .group_by(Answer.questionId)\
-                     .all()
+                     .order_by()
+                     .all()             
+
+    # analytics_data = db.session.query(Answer.questionId.label("questionID"),
+    #                                   QuestionText.text.label("questionText"),
+    #                                   numAns.label("numAns"),
+    #                                   trueAns.label("trueAns"),
+    #                                   numMaleAns.label("numMaleAns"),
+    #                                   trueMaleAns.label("trueMaleAns"),
+    #                                   numFemaleAns.label("numFemaleAns"),
+    #                                   trueFemaleAns.label("trueFemaleAns")
+    #                                   )\
+    #                  .join(QuestionText, Answer.questionId == QuestionText.id)\
+    #                  .join(AnswerMeta, Answer.id == AnswerMeta.answerId)\
+    #                  .filter(QuestionText.language == "EN")\
+    #                  .group_by(Answer.questionId)\
+    #                  .order_by()
+    #                  .all()
                      
     print(json.dumps(analytics_data))
 
