@@ -191,8 +191,9 @@ def analytics():
                      .group_by(Answer.questionId)\
                      .all()
 
-    analytics_df = pd.DataFrame(analytics_data)
-    analytics_df = analytics_data.keys()
+    analytics_df = pd.DataFrame(analytics_data,
+                                columns = ["questionId", "questionText","numAns","trueAns","numMaleAns","trueMaleAns","numFemaleAns","trueFemaleAns"])
+
 
     print(analytics_df)
 
