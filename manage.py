@@ -172,7 +172,7 @@ def analytics():
     #(Answer.questionId, QuestionText.text, numAns, trueAns)
     #                 
     #                 .join(Answer.id)\
-    #                 .join(AnswerMeta.answerId)\
+    #                 
     #                 
     # an                
 
@@ -185,9 +185,8 @@ def analytics():
                                       #numFemaleAns.label("numFemaleAns"),
                                       #trueFemaleAns.label("trueFemaleAns")
                                       )\
-                     .join(Answer.questionId)\
-                     .join(Question.id)\
-                     .join(QuestionText.questionId)\
+                     .join(QuestionText, Answer.questionId == QuestionText.id)\
+                     .join(AnswerMeta, Answer.id == AnswerMeta.answerId)\
                      .filter_by(QuestionText.language == "EN")\
                      .group_by(Answer.questionId)\
                      .first()
