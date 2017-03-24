@@ -187,7 +187,7 @@ def analytics():
                                       )\
                      .join(QuestionText, Answer.questionId == QuestionText.id)\
                      .join(AnswerMeta, Answer.id == AnswerMeta.answerId)\
-                     .filter_by(QuestionText.language == "EN")\
+                     .filter(QuestionText.language == "EN")\
                      .group_by(Answer.questionId)\
                      .first()
                      
