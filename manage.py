@@ -200,7 +200,7 @@ def analytics():
 
 
     print(analytics_df.describe())
-    print(analytics_df[["questionId","QuestionText","percAns","percMaleAns","percFemaleAns"]].sort("percAns",ascending=False))
+    print(analytics_df[["questionId","questionText","percAns","percMaleAns","percFemaleAns"]].sort("percAns",ascending=False))
 
 
 @manager.option(
