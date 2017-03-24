@@ -172,9 +172,9 @@ def analytics():
     numFemaleAns = func.count(case([((AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL")))
     trueFemaleAns = func.count(case([((Answer.answerValue == True) & (AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL")))
 
-    percAns = cast(trueAns / numAns, Float)
-    percMaleAns = cast(trueMaleAns / numMaleAns, Float)
-    percFemaleAns = cast(trueFemaleAns / numFemaleAns, Float)
+    percAns = cast(trueAns / numAns, Float(asdecimal=False))
+    percMaleAns = cast(trueMaleAns / numMaleAns, Float(asdecimal=False))
+    percFemaleAns = cast(trueFemaleAns / numFemaleAns, Float(asdecimal=False))
 
     analytics_data = db.session.query(Answer.questionId.label("questionID"),
                                       QuestionText.text.label("questionText"),
@@ -205,10 +205,10 @@ def analytics():
     #                  .order_by()
     #                  .all()
 
-    analytics_df = pd.DataFrame(analytics_data.fetchall())
-    analytics_df.columns = analytics_data.keys()
-                     
-    print(analytics_df)
+    #analytics_df = pd.DataFrame(analytics_data)
+    #print(analytics_df)
+
+    print(analytics_data)
 
 @manager.option(
     '-n',
