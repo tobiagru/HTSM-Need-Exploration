@@ -183,7 +183,6 @@ def analytics():
                      .join(AnswerMeta, Answer.id == AnswerMeta.answerId)\
                      .filter(QuestionText.language == "EN")\
                      .group_by(Answer.questionId)\
-                     .order_by()
                      .all()             
 
     # analytics_data = db.session.query(Answer.questionId.label("questionID"),
