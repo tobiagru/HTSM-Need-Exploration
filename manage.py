@@ -205,7 +205,8 @@ def analytics():
     #                  .order_by()
     #                  .all()
 
-    analytics_df = pd.DataFrame(analytics_data)
+    analytics_df = pd.DataFrame(analytics_data.fetchall())
+    analytics_df.columns = analytics_data.keys()
                      
     print(analytics_df)
 
