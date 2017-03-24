@@ -169,9 +169,9 @@ def analytics():
     numFemaleAns = func.count(case([((AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL")))
     trueFemaleAns = func.count(case([((Answer.answerValue == True) & (AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL")))
 
-    percAns = trueAns / numAns
-    percMaleAns = trueMaleAns / numMaleAns
-    percFemaleAns = trueFemaleAns / numFemaleAns
+    percAns = float(trueAns / numAns)
+    percMaleAns = float(trueMaleAns / numMaleAns)
+    percFemaleAns = float(trueFemaleAns / numFemaleAns)
 
     analytics_data = db.session.query(Answer.questionId.label("questionID"),
                                       QuestionText.text.label("questionText"),
