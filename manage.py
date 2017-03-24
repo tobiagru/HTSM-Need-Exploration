@@ -175,7 +175,13 @@ def analytics():
     #                 .join(QuestionText)\
     # an                .filter_by(QuestionText.language == "EN")
 
-    analytics_data = db.session.query(Answer.questionId, numAns, trueAns, numMaleAns, trueMaleAns, numFemaleAns, trueFemaleAns)\
+    analytics_data = db.session.query(Answer.questionId.label("questionID"),
+                                      numAns.label("numAns"),
+                                      trueAns.label("trueAns"),
+                                      numMaleAns.label("numMaleAns"),
+                                      trueMaleAns.label("trueMaleAns"),
+                                      numFemaleAns.label("numFemaleAns"),
+                                      trueFemaleAns.label("trueFemaleAns"))\
                      .group_by(Answer.questionId)\
                      .join(AnswerMeta)\
                      .all()
