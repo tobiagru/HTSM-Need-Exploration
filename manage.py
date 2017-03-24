@@ -184,8 +184,9 @@ def analytics():
                                       numFemaleAns.label("numFemaleAns"),
                                       trueFemaleAns.label("trueFemaleAns"))\
                      .group_by(Answer.questionId)\
-                     .join(AnswerMeta)\
-                     .join("id", "questionId")\
+                     .join(AnswerMeta.answerId)\
+                     .join(Question.id)\
+                     .join(QuestionText.questionId)\
                      .first()
                      
     print(json.dumps(analytics_data))
