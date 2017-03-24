@@ -170,13 +170,14 @@ def analytics():
     trueFemaleAns = func.count(case([((Answer.answerValue == True) & (AnswerMeta.value == "female"),Answer.questionId)],else_=literal_column("NULL")))
 
     #(Answer.questionId, QuestionText.text, numAns, trueAns)
-    #                 .join(AnswerMeta)\
+    #                 
     #                 .join(Question)\
     #                 .join(QuestionText)\
     # an                .filter_by(QuestionText.language == "EN")
 
-    analytics_data = db.session.query(Answer.questionId, QuestionText.text, numAns)\
+    analytics_data = db.session.query(Answer.questionId, QuestionText.text, numAns, trueAns, numMaleAns, trueMaleAns, numFemaleAns, trueFemaleAns)\
                      .group_by(Answer.questionId)\
+                     .join(AnswerMeta)\
                      .all()
                      
     print(analytics_data)
