@@ -171,7 +171,7 @@ def analytics():
 
     #(Answer.questionId, QuestionText.text, numAns, trueAns)
 
-    analytics_data = Answer.query\
+    analytics_data = db.session.query(Answer.questionId)\
                      .group_by(Answer.questionId)\
                      .join(AnswerMeta)\
                      .join(Question)\
