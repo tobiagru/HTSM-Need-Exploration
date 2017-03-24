@@ -207,7 +207,7 @@ def analytics():
 
     analytics_df = pd.DataFrame(analytics_data)
                      
-    print(analytics_data)
+    print(analytics_df)
 
 @manager.option(
     '-n',
