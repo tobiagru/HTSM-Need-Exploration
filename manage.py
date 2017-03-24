@@ -189,7 +189,7 @@ def analytics():
                      .join(AnswerMeta, Answer.id == AnswerMeta.answerId)\
                      .filter(QuestionText.language == "EN")\
                      .group_by(Answer.questionId)\
-                     .first()
+                     .all()
                      
     print(json.dumps(analytics_data))
 
